@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ThriveWoo POS — Modern Billing Terminal</title>
+  
+  <!-- Bootstrap 5 & Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- POS Stylesheets -->
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/pos-styles.css">
+</head>
+<body class="pos-body">
+
+  <!-- Top POS Header -->
+  <header class="pos-header">
+    <div class="d-flex align-items-center gap-3">
+      <a href="/pos/sale" class="pos-brand">
+        <div class="pos-brand-icon">
+          <i class="bi bi-cart4"></i>
+        </div>
+        <div>
+          <div class="pos-brand-title">ThriveWoo <span class="pos-brand-badge">POS</span></div>
+          <div class="pos-brand-sub">Retail Point of Sale Terminal</div>
+        </div>
+      </a>
+      
+      <div class="pos-station-chip d-none d-md-flex">
+        <i class="bi bi-shop text-primary me-1"></i>
+        <span>Store: <strong class="pos-store-name">My Store</strong></span>
+      </div>
+      <div class="pos-station-chip d-none d-lg-flex">
+        <i class="bi bi-display text-primary"></i>
+        <span>Register: <strong>REG-01</strong></span>
+      </div>
+
+      <div class="pos-station-chip d-none d-lg-flex">
+        <span class="pos-online-dot" id="pos-network-status-dot"></span>
+        <span id="pos-network-status-text">Live Cloud</span>
+      </div>
+    </div>
+
+    <div class="d-flex align-items-center gap-2">
+      <!-- Quick Lock Register Button -->
+      <button class="btn btn-outline-secondary btn-sm d-flex align-items-center gap-1" onclick="PosLock.lockRegister()" title="Lock Register (PIN required to unlock)">
+        <i class="bi bi-lock-fill text-warning"></i>
+        <span class="d-none d-sm-inline">Lock</span>
+      </button>
+
+      <!-- Cashier Profile -->
+      <div class="dropdown">
+        <button class="btn btn-light btn-sm dropdown-toggle d-flex align-items-center gap-2 border" type="button" data-bs-toggle="dropdown">
+          <img src="/img/user-new.png" alt="Staff" style="width:24px;height:24px;border-radius:50%;object-fit:cover;">
+          <span class="fw-bold pos-user-name" id="pos-header-staff-name">Store Admin</span>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end shadow-sm">
+          <li><a class="dropdown-item" href="/pos/shifts"><i class="bi bi-clock-history me-2"></i>Shift & Drawer</a></li>
+          <li><a class="dropdown-item" href="/pos/settings"><i class="bi bi-gear me-2"></i>POS Settings</a></li>
+          <li><hr class="dropdown-divider"></li>
+          <li><a class="dropdown-item text-danger" href="/logout"><i class="bi bi-box-arrow-right me-2"></i>Sign Out</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  <!-- POS Navigation Bar -->
+  <nav class="pos-subnav">
+    <a href="/pos/dashboard" class="pos-subnav-item"><i class="bi bi-speedometer2"></i> Dashboard</a>
+    <a href="/pos/sale" class="pos-subnav-item active"><i class="bi bi-calculator"></i> New Sale</a>
+    <a href="/pos/held" class="pos-subnav-item">
+      <i class="bi bi-pause-circle"></i> Held Sales
+      <span class="pos-subnav-badge" id="pos-held-count-badge" style="display:none;">0</span>
+    </a>
+    <a href="/pos/history" class="pos-subnav-item"><i class="bi bi-receipt"></i> Sales History</a>
+    <a href="/pos/products" class="pos-subnav-item"><i class="bi bi-box-seam"></i> Products</a>
+    <a href="/pos/customers" class="pos-subnav-item"><i class="bi bi-people"></i> Customers</a>
+    <a href="/pos/promotions" class="pos-subnav-item"><i class="bi bi-tag"></i> Promotions</a>
+    <a href="/pos/inventory" class="pos-subnav-item"><i class="bi bi-boxes"></i> Inventory</a>
+    <a href="/pos/shifts" class="pos-subnav-item"><i class="bi bi-safe"></i> Shifts</a>
+    <a href="/pos/reports" class="pos-subnav-item"><i class="bi bi-bar-chart-line"></i> Reports</a>
+    <a href="/pos/settings" class="pos-subnav-item"><i class="bi bi-sliders"></i> Settings</a>
+  </nav>
+
+  <!-- Main POS Dual-Pane Layout -->
+  <main class="pos-billing-layout">
+    
+    <!-- LEFT: Product Catalog & Barcode Scanner Area -->
+    <section class="pos-catalog-pane">
+      
+      <!-- Catalog Search & Camera Trigger Bar -->
+      <div class="pos-catalog-header">
+        <div class="pos-search-wrapper">
+          <i class="bi bi-search pos-search-icon"></i>
+          <input type="text" id="pos-search-input" class="pos-search-input" placeholder="Search by name, SKU or scan barcode..." autocomplete="off" autofocus oninput="PosBilling.searchCatalog(this.value)">
+          <button type="button" class="pos-barcode-btn" onclick="PosCameraScan.openScannerModal()" title="Open Camera Barcode Scanner">
+            <i class="bi bi-camera"></i>
+            <span>Scan</span>
+          </button>
+        </div>
+
+        <!-- Category Horizontal Pills -->
+        <div class="pos-categories-slider" id="pos-categories-slider">
+          <!-- Dynamically populated -->
+        </div>
+      </div>
+
+      <!-- Product Cards Grid -->
+      <div class="pos-product-grid" id="pos-product-grid">
+        <!-- Dynamically populated -->
+      </div>
+    </section>
+
+    <!-- RIGHT: Cart / Active Sale Ticket -->
+    <aside class="pos-ticket-pane">
+      
+      <!-- Customer Assignment Header -->
+      <div class="pos-ticket-header">
+        <div class="pos-customer-chip" data-bs-toggle="modal" data-bs-target="#posCustomerModal" title="Click to change customer">
+          <div class="d-flex align-items-center gap-2">
+            <i class="bi bi-person-circle fs-5 text-primary"></i>
+            <div>
+              <div class="fw-bold" style="font-size:12.5px;" id="pos-customer-name-display">Walk-in Customer / Guest</div>
+              <div class="text-muted" style="font-size:11px;">Standard Pricing • No Loyalty</div>
+            </div>
+          </div>
+          <span class="badge bg-light text-dark border">Change</span>
+        </div>
+      </div>
+
+      <!-- Line Items List -->
+      <div class="pos-ticket-items" id="pos-ticket-items">
+        <!-- Dynamically populated line items -->
+      </div>
+
+      <!-- Empty Cart Illustration -->
+      <div class="pos-empty-cart" id="pos-empty-cart">
+        <i class="bi bi-basket pos-empty-cart-icon"></i>
+        <div class="fw-bold fs-6 text-dark mb-1">Your Sale Ticket is Empty</div>
+        <div class="small">Tap products on the left or scan barcodes to begin billing.</div>
+      </div>
+
+      <!-- Ticket Totals & Calculations -->
+      <div class="pos-ticket-summary">
+        <div class="pos-summary-row">
+          <span>Subtotal</span>
+          <span id="pos-cart-subtotal">$0.00</span>
+        </div>
+        <div class="pos-summary-row">
+          <span>Discount</span>
+          <span id="pos-cart-discount" class="text-warning">$0.00</span>
+        </div>
+        <div class="pos-summary-row">
+          <span>Included Tax (GST/VAT)</span>
+          <span id="pos-cart-tax">$0.00</span>
+        </div>
+        <div class="pos-total-row">
+          <span class="pos-total-label">Grand Total:</span>
+          <span class="pos-total-val" id="pos-cart-total">$0.00</span>
+        </div>
+
+        <!-- POS Action Buttons -->
+        <div class="pos-ticket-actions">
+          <button class="pos-btn-action pos-btn-clear" onclick="PosBilling.clearCart()" title="Clear Sale">
+            <i class="bi bi-trash"></i>
+            <span>Clear</span>
+          </button>
+          <button class="pos-btn-action pos-btn-hold" onclick="PosBilling.parkActiveSale()" title="Park / Hold Sale">
+            <i class="bi bi-pause"></i>
+            <span>Hold</span>
+          </button>
+          <button class="pos-btn-action pos-btn-pay" id="pos-pay-btn" onclick="PosPayments.openCheckoutModal()" disabled>
+            <i class="bi bi-credit-card-2-front"></i>
+            <span>PAY NOW</span>
+          </button>
+        </div>
+      </div>
+    </aside>
+
+  </main>
+
+  <!-- ─── MODAL 1: MULTI-TENDER PAYMENT CHECKOUT ────────────────── -->
+  <div class="modal fade" id="posPaymentModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content border-0 shadow-lg" style="border-radius:16px; overflow:hidden;">
+        <div class="modal-header border-bottom px-4 py-3">
+          <h5 class="modal-title fw-bold"><i class="bi bi-wallet2 text-primary me-2"></i>Checkout &amp; Settle Bill</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body p-4">
+          
+          <div class="row g-4">
+            <!-- Left: Method Selector -->
+            <div class="col-md-4 border-end">
+              <label class="form-label small fw-bold text-uppercase text-muted">Payment Tender</label>
+              <div class="d-flex flex-column gap-2">
+                <button type="button" class="btn btn-outline-primary text-start py-2 px-3 fw-bold pos-method-tab active" data-method="Cash" onclick="PosPayments.selectMethod('Cash')">
+                  💵 Cash
+                </button>
+                <button type="button" class="btn btn-outline-primary text-start py-2 px-3 fw-bold pos-method-tab" data-method="Card" onclick="PosPayments.selectMethod('Card')">
+                  💳 Card (EFTPOS)
+                </button>
+                <button type="button" class="btn btn-outline-primary text-start py-2 px-3 fw-bold pos-method-tab" data-method="UPI" onclick="PosPayments.selectMethod('UPI')">
+                  📱 UPI / Dynamic QR
+                </button>
+                <button type="button" class="btn btn-outline-primary text-start py-2 px-3 fw-bold pos-method-tab" data-method="Pine Labs" onclick="PosPayments.selectMethod('Pine Labs')">
+                  📟 Pine Labs Terminal
+                </button>
+                <button type="button" class="btn btn-outline-primary text-start py-2 px-3 fw-bold pos-method-tab" data-method="Cheque" onclick="PosPayments.selectMethod('Cheque')">
+                  📄 Cheque / Credit
+                </button>
+              </div>
+            </div>
+
+            <!-- Right: Tender Processing Interface -->
+            <div class="col-md-8">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <span class="text-muted fw-bold">Payable Amount:</span>
+                <span class="fs-3 fw-bold text-primary" id="pos-modal-payable-total">$0.00</span>
+              </div>
+
+              <!-- VIEW 1: CASH -->
+              <div id="pos-payment-view-cash">
+                <label class="form-label small fw-semibold">Quick Cash Notes</label>
+                <div class="pos-quick-cash-row">
+                  <button type="button" class="pos-cash-note-btn" onclick="PosPayments.setQuickCash('exact')">Exact</button>
+                  <button type="button" class="pos-cash-note-btn" onclick="PosPayments.setQuickCash(10)">$10</button>
+                  <button type="button" class="pos-cash-note-btn" onclick="PosPayments.setQuickCash(20)">$20</button>
+                  <button type="button" class="pos-cash-note-btn" onclick="PosPayments.setQuickCash(50)">$50</button>
+                  <button type="button" class="pos-cash-note-btn" onclick="PosPayments.setQuickCash(100)">$100</button>
+                </div>
+
+                <div class="mb-3">
+                  <label class="form-label small fw-semibold">Cash Amount Received</label>
+                  <input type="number" step="0.01" id="pos-cash-received-input" class="form-control form-control-lg fw-bold" placeholder="0.00" oninput="PosPayments.calculateChange()">
+                </div>
+
+                <div id="pos-cash-insufficient-alert" class="alert alert-danger py-2 small" style="display:none;"></div>
+
+                <div class="pos-change-box">
+                  <div class="small fw-bold text-success text-uppercase">Change Due to Customer</div>
+                  <div class="pos-change-val" id="pos-change-amount">$0.00</div>
+                </div>
+              </div>
+
+              <!-- VIEW 2: CARD -->
+              <div id="pos-payment-view-card" style="display:none;">
+                <div class="text-center py-4 bg-light rounded-3 mb-3 border">
+                  <i class="bi bi-credit-card-2-front fs-1 text-primary mb-2 d-block"></i>
+                  <div class="fw-bold fs-6">Insert, Swipe, or Tap Card on Terminal</div>
+                  <p class="small text-muted mb-0">Accepts Visa, Mastercard, AMEX, Apple Pay &amp; Google Pay</p>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label small fw-semibold">Card Auth / RRN Reference (Optional)</label>
+                  <input type="text" class="form-control" placeholder="e.g. AUTH-982341">
+                </div>
+              </div>
+
+              <!-- VIEW 3: UPI / DYNAMIC QR -->
+              <div id="pos-payment-view-upi" style="display:none;" class="text-center">
+                <div class="p-3 bg-light rounded-3 border d-inline-block mb-3">
+                  <img id="pos-upi-qr-image" src="/img/default-product.png" alt="UPI QR" style="width:200px;height:200px;border-radius:8px;">
+                </div>
+                <p class="small text-muted mb-0">Ask customer to scan using GPay, PhonePe, Paytm or Banking App</p>
+              </div>
+
+              <!-- VIEW 4: PINE LABS -->
+              <div id="pos-payment-view-pinelabs" style="display:none;">
+                <div class="text-center py-4 bg-light rounded-3 mb-3 border">
+                  <i class="bi bi-tablet fs-1 text-primary mb-2 d-block"></i>
+                  <div class="fw-bold fs-6" id="pos-pinelabs-status-text">Pine Labs Android Terminal Ready</div>
+                  <p class="small text-muted mb-0">Transaction automatically dispatched to wireless POS device</p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+        <div class="modal-footer border-top px-4 py-3 bg-light">
+          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-success px-4 fw-bold" id="pos-confirm-payment-btn" onclick="PosPayments.finalizePayment()">
+            <i class="bi bi-check-circle me-1"></i> Complete Sale &amp; Print Receipt
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── MODAL 2: THERMAL RECEIPT PREVIEW (58mm / 80mm) ────────── -->
+  <div class="modal fade" id="posReceiptModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content border-0 shadow-lg" style="border-radius:16px; overflow:hidden;">
+        <div class="modal-header border-bottom px-4 py-3 bg-light">
+          <h5 class="modal-title fw-bold"><i class="bi bi-printer me-2 text-primary"></i>Sale Receipt</h5>
+          <div class="btn-group btn-group-sm ms-auto me-2">
+            <button class="btn btn-outline-secondary pos-receipt-format-btn" data-format="thermal_58mm" onclick="PosReceipt.setFormat('thermal_58mm')">58mm</button>
+            <button class="btn btn-outline-secondary pos-receipt-format-btn active" data-format="thermal_80mm" onclick="PosReceipt.setFormat('thermal_80mm')">80mm</button>
+          </div>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        
+        <div class="pos-receipt-preview-wrap">
+          <div id="pos-receipt-content" class="pos-thermal-receipt format-80mm">
+            <!-- Dynamically populated receipt content -->
+          </div>
+        </div>
+
+        <div class="modal-footer border-top px-4 py-3 bg-light d-flex justify-content-between">
+          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary fw-bold px-4" onclick="PosReceipt.printReceipt()">
+            <i class="bi bi-printer me-1"></i> Print Receipt
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── MODAL 3: CAMERA BARCODE SCANNER ───────────────────────── -->
+  <div class="modal fade" id="posCameraScanModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content border-0 shadow-lg" style="border-radius:16px; overflow:hidden;">
+        <div class="modal-header border-bottom px-4 py-3">
+          <h5 class="modal-title fw-bold"><i class="bi bi-camera me-2 text-primary"></i>Camera Barcode Scanner</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" onclick="PosCameraScan.stopCamera()"></button>
+        </div>
+        <div class="modal-body p-4 text-center">
+          <div class="position-relative d-inline-block rounded-3 overflow-hidden border shadow-sm" style="max-width:100%; width:360px; height:260px; background:#000;">
+            <video id="pos-camera-video" style="width:100%; height:100%; object-fit:cover;" autoplay muted playsinline></video>
+            <div style="position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); width:220px; height:120px; border:2px dashed #10b981; border-radius:12px; pointer-events:none;"></div>
+          </div>
+          <div id="pos-camera-error" class="alert alert-danger py-2 small mt-3" style="display:none;"></div>
+          <p class="small text-muted mt-2 mb-0">Center barcode inside green targeting box</p>
+        </div>
+        <div class="modal-footer border-top px-4 py-2 bg-light">
+          <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal" onclick="PosCameraScan.stopCamera()">Close Camera</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── REGISTER LOCK OVERLAY (STAFF PIN KEYPAD) ───────────────── -->
+  <div id="pos-lock-overlay" style="display:none; position:fixed; inset:0; background:rgba(15, 23, 42, 0.95); z-index:99999; backdrop-filter:blur(6px); align-items:center; justify-content:center; flex-direction:column;">
+    <div class="text-center mb-4 text-white">
+      <i class="bi bi-lock-fill fs-1 text-warning mb-2 d-block"></i>
+      <h3 class="fw-bold mb-1">Register Locked</h3>
+      <p class="text-white-50 small mb-0">Enter staff PIN to unlock terminal (Default: 1234)</p>
+    </div>
+
+    <!-- PIN Dots Indicator -->
+    <div id="pos-pin-dots" class="d-flex gap-3 mb-4">
+      <div class="pos-pin-dot" style="width:16px;height:16px;border-radius:50%;background:rgba(255,255,255,0.2);border:2px solid #fff;"></div>
+      <div class="pos-pin-dot" style="width:16px;height:16px;border-radius:50%;background:rgba(255,255,255,0.2);border:2px solid #fff;"></div>
+      <div class="pos-pin-dot" style="width:16px;height:16px;border-radius:50%;background:rgba(255,255,255,0.2);border:2px solid #fff;"></div>
+      <div class="pos-pin-dot" style="width:16px;height:16px;border-radius:50%;background:rgba(255,255,255,0.2);border:2px solid #fff;"></div>
+    </div>
+
+    <div id="pos-pin-error" class="text-danger small fw-bold mb-3" style="display:none;"></div>
+
+    <!-- Numpad Grid -->
+    <div style="display:grid; grid-template-columns:repeat(3, 75px); gap:12px;">
+      <button type="button" class="btn btn-light btn-lg py-3 fw-bold fs-4" onclick="PosLock.pressKey('1')">1</button>
+      <button type="button" class="btn btn-light btn-lg py-3 fw-bold fs-4" onclick="PosLock.pressKey('2')">2</button>
+      <button type="button" class="btn btn-light btn-lg py-3 fw-bold fs-4" onclick="PosLock.pressKey('3')">3</button>
+      <button type="button" class="btn btn-light btn-lg py-3 fw-bold fs-4" onclick="PosLock.pressKey('4')">4</button>
+      <button type="button" class="btn btn-light btn-lg py-3 fw-bold fs-4" onclick="PosLock.pressKey('5')">5</button>
+      <button type="button" class="btn btn-light btn-lg py-3 fw-bold fs-4" onclick="PosLock.pressKey('6')">6</button>
+      <button type="button" class="btn btn-light btn-lg py-3 fw-bold fs-4" onclick="PosLock.pressKey('7')">7</button>
+      <button type="button" class="btn btn-light btn-lg py-3 fw-bold fs-4" onclick="PosLock.pressKey('8')">8</button>
+      <button type="button" class="btn btn-light btn-lg py-3 fw-bold fs-4" onclick="PosLock.pressKey('9')">9</button>
+      <button type="button" class="btn btn-outline-light btn-lg py-3 fw-bold fs-5 text-danger" onclick="PosLock.clearPin()">C</button>
+      <button type="button" class="btn btn-light btn-lg py-3 fw-bold fs-4" onclick="PosLock.pressKey('0')">0</button>
+      <button type="button" class="btn btn-outline-light btn-lg py-3 fw-bold fs-5" onclick="PosLock.backspacePin()"><i class="bi bi-backspace"></i></button>
+    </div>
+  </div>
+
+  <style>
+    .pos-pin-dot.filled {
+      background: #10b981 !important;
+      border-color: #10b981 !important;
+      transform: scale(1.15);
+    }
+  </style>
+
+  <!-- POS Core Scripts -->
+  <script src="/js/pos/pos-utils.js"></script>
+  <script src="/js/pos/pos-api.js"></script>
+  <script src="/js/pos/pos-billing.js"></script>
+  <script src="/js/pos/pos-payments.js"></script>
+  <script src="/js/pos/pos-receipt.js"></script>
+  <script src="/js/pos/pos-held.js"></script>
+  <script src="/js/pos/pos-lock.js"></script>
+  <script src="/js/pos/pos-camera-scan.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      PosBilling.init();
+      if (localStorage.getItem('pos_is_locked') === 'true') {
+        PosLock.lockRegister();
+      }
+    });
+  </script>
+</body>
+</html>

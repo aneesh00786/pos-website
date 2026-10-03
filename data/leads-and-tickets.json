@@ -1,0 +1,37 @@
+{
+  "demo_requests": [
+    {
+      "id": "DEMO-901110",
+      "name": "Elena Rostova",
+      "email": "elena@artisanbakery.com",
+      "phone": "+1 555-891-2345",
+      "company": "Artisan Bakery Chain",
+      "registers_count": "5-10",
+      "notes": "",
+      "created_at": "2026-09-28T06:11:41.110Z",
+      "status": "pending_contact"
+    }
+  ],
+  "newsletter_subscribers": [],
+  "support_tickets": [
+    {
+      "id": "TCK-5599",
+      "name": "David Chen",
+      "email": "david@urbanpulse.com",
+      "subject": "Pairing 80mm Bluetooth printer on tablet",
+      "category": "Hardware Setup",
+      "priority": "Normal",
+      "message": "Need instructions on pairing the ThrivePrint 80mm with an Android 12 tablet.",
+      "status": "Open",
+      "created_at": "2026-09-28T06:12:02.283Z"
+    },
+    {
+      "id": "TCK-1001",
+      "subject": "Configuring ESC/POS printer on Windows 11",
+      "category": "Hardware Setup",
+      "status": "Resolved",
+      "priority": "Normal",
+      "created_at": "2026-09-20T10:15:00Z"
+    }
+  ]
+}

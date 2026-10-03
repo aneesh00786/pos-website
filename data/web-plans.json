@@ -1,0 +1,91 @@
+{
+  "plans": [
+    {
+      "id": "plan_starter",
+      "name": "Starter",
+      "badge": "For Single Stores",
+      "description": "Essential POS billing and inventory for small shops and pop-up boutiques.",
+      "price_monthly": 29,
+      "price_annually": 24,
+      "currency": "$",
+      "registers_included": 1,
+      "features": [
+        "1 POS Billing Register",
+        "Unlimited Products & Barcodes",
+        "USB & Camera Barcode Scanning",
+        "Standard 58mm / 80mm Receipt Printing",
+        "Cash, Card & UPI QR Payments",
+        "Basic Daily Sales Reports",
+        "100% Offline Vault Billing",
+        "Email Support (24-hour SLA)"
+      ],
+      "popular": false,
+      "cta": "Start 14-Day Free Trial"
+    },
+    {
+      "id": "plan_pro",
+      "name": "Professional",
+      "badge": "Most Popular",
+      "description": "Advanced multi-tender billing, shift drawer tracking, and inventory control.",
+      "price_monthly": 79,
+      "price_annually": 64,
+      "currency": "$",
+      "registers_included": 3,
+      "features": [
+        "Up to 3 POS Billing Registers",
+        "Everything in Starter, plus:",
+        "Pine Labs & Stripe Cloud Terminal Sync",
+        "Shift Management & Cash Drawer Z-Reports",
+        "Customer Loyalty & Credit Accounts",
+        "Hold & Resume Multi-Cart Parking",
+        "Automated Low-Stock Alerts",
+        "Promotions & Discount Engine",
+        "Priority Live Chat Support"
+      ],
+      "popular": true,
+      "cta": "Start 14-Day Free Trial"
+    },
+    {
+      "id": "plan_enterprise",
+      "name": "Multi-Store Enterprise",
+      "badge": "Custom Scalability",
+      "description": "For retail chains, multi-location franchises, and high-volume distribution.",
+      "price_monthly": 149,
+      "price_annually": 119,
+      "currency": "$",
+      "registers_included": 10,
+      "features": [
+        "Up to 10 Registers (Custom Add-ons)",
+        "Everything in Professional, plus:",
+        "Multi-Location Centralized Inventory",
+        "Custom ESC/POS Thermal Templates",
+        "Multi-Store Sales Consolidation",
+        "ERP & Webstore Auto-Sync Bridge",
+        "Role-Based Staff Access & PIN Log",
+        "Dedicated Account Manager & 99.9% SLA"
+      ],
+      "popular": false,
+      "cta": "Contact Enterprise Sales"
+    }
+  ],
+  "addons": [
+    {
+      "id": "addon_extra_register",
+      "name": "Extra Register Station License",
+      "price": 19,
+      "period": "month"
+    },
+    {
+      "id": "addon_pinelabs",
+      "name": "Pine Labs Payment Terminal Bridge",
+      "price": 15,
+      "period": "month"
+    },
+    {
+      "id": "addon_priority_support",
+      "name": "24/7 Dedicated Priority Phone Support",
+      "price": 29,
+      "period": "month"
+    }
+  ]
+}

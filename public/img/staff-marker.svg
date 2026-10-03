@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none">
+  <style>
+    /* Radar Pulse Animation */
+    .radar-pulse {
+      animation: pulse 2s infinite ease-out;
+      transform-origin: 32px 58px;
+    }
+    @keyframes pulse {
+      0% { r: 2; opacity: 0.8; }
+      100% { r: 24; opacity: 0; }
+    }
+  </style>
+
+  <circle cx="32" cy="58" r="10" fill="#d97706" class="radar-pulse" />
+
+  <ellipse cx="32" cy="60" rx="10" ry="3" fill="#000000" fill-opacity="0.25"/>
+
+  <path d="M32 2C18.19 2 7 13.19 7 27C7 42 32 62 32 62C32 62 57 42 57 27C57 13.19 45.81 2 32 2Z" 
+        fill="#069ad9ff" 
+        stroke="#ffffff" 
+        stroke-width="2"/>
+
+  <circle cx="32" cy="20" r="6" fill="#ffffff"/>
+
+  <path d="M32 28C26 28 21 31 21 36V40H43V36C43 31 38 28 32 28Z" fill="#ffffff"/>
+
+  <path d="M32 28L34.5 32H29.5L32 28Z" fill="#069ad9ff"/>
+  <path d="M32 32L34 37H30L32 32Z" fill="#069ad9ff"/>
+</svg>

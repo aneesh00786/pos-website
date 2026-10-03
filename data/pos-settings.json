@@ -1,0 +1,29 @@
+{
+  "store_name": "ThriveWoo Central Store",
+  "store_address": "145 Collins Street, Melbourne VIC 3000",
+  "store_phone": "+61 3 9876 5432",
+  "tax_number": "ABN 88 123 456 789",
+  "currency": "USD",
+  "currency_symbol": "$",
+  "default_tax_rate": 10,
+  "tax_inclusive_pricing": true,
+  "printer_type": "thermal_80mm",
+  "printer_lan_ip": "192.168.1.100",
+  "printer_lan_port": 9100,
+  "auto_print_receipt": true,
+  "barcode_auto_add": true,
+  "audio_feedback": true,
+  "register_id": "REG-01",
+  "register_name": "Front Checkout 01",
+  "pinelabs_enabled": false,
+  "stripe_terminal_enabled": false,
+  "allowed_payment_methods": [
+    "Cash",
+    "Card",
+    "UPI",
+    "Stripe",
+    "Pine Labs",
+    "Cheque",
+    "Store Credit"
+  ]
+}

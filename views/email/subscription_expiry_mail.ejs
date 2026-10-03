@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>POS Subscription Notice</title>
+</head>
+<body style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 24px; background-color: #f1f5f9; color: #1e293b; margin: 0;">
+  <div style="max-width: 600px; margin: 0 auto; background: #ffffff; padding: 32px 28px; border-radius: 14px; box-shadow: 0 10px 25px rgba(0,0,0,0.06); border: 1px solid #e2e8f0;">
+    
+    <!-- Branding Header -->
+    <div style="text-align: center; margin-bottom: 26px; border-bottom: 1px solid #f1f5f9; padding-bottom: 20px;">
+      <div style="display: inline-flex; align-items: center; justify-content: center; width: 56px; height: 56px; background: linear-gradient(135deg, #4f46e5, #7c3aed); border-radius: 14px; color: #ffffff; font-size: 26px; font-weight: 800; margin-bottom: 10px;">
+        TW
+      </div>
+      <h2 style="margin: 0; font-size: 22px; font-weight: 800; color: #0f172a;">ThriveWoo POS</h2>
+      <p style="margin: 4px 0 0; font-size: 13px; color: #64748b;">Retail Point of Sale &amp; Billing Platform</p>
+    </div>
+    
+    <!-- Greeting -->
+    <h3 style="color: #0f172a; font-size: 18px; font-weight: 700; margin-top: 0;">
+      Hello <%= name %> (<%= store_name %>),
+    </h3>
+
+    <!-- Dynamic Status Banner & Message -->
+    <% if (status === 'expired') { %>
+      <div style="background: #fef2f2; border-left: 4px solid #ef4444; padding: 14px 18px; border-radius: 8px; margin-bottom: 20px;">
+        <strong style="color: #991b1b; font-size: 15px;">⚠️ POS Subscription Expired</strong>
+        <p style="margin: 6px 0 0; color: #7f1d1d; font-size: 14px; line-height: 1.5;">
+          Your ThriveWoo POS subscription for the <strong><%= plan_name %></strong> plan has expired.
+        </p>
+      </div>
+      <p style="font-size: 14.5px; line-height: 1.6; color: #334155;">
+        Your retail billing registers and synced inventory feeds are currently paused. To restore uninterrupted checkout, Pine Labs card processing, and offline synchronization, please renew your subscription below:
+      </p>
+    <% } else if (status === 'expiring') { %>
+      <div style="background: #fffbeb; border-left: 4px solid #f59e0b; padding: 14px 18px; border-radius: 8px; margin-bottom: 20px;">
+        <strong style="color: #92400e; font-size: 15px;">⏳ Subscription Expiring Today</strong>
+        <p style="margin: 6px 0 0; color: #78350f; font-size: 14px; line-height: 1.5;">
+          Your ThriveWoo POS subscription for the <strong><%= plan_name %></strong> plan expires today.
+        </p>
+      </div>
+      <p style="font-size: 14.5px; line-height: 1.6; color: #334155;">
+        Please verify that your registered card or PayPal payment tender is up to date so your store registers and staff shifts experience zero downtime.
+      </p>
+    <% } else if (status === 'expiring_tomorrow') { %>
+      <div style="background: #eff6ff; border-left: 4px solid #3b82f6; padding: 14px 18px; border-radius: 8px; margin-bottom: 20px;">
+        <strong style="color: #1e40af; font-size: 15px;">📅 Expiring Tomorrow</strong>
+        <p style="margin: 6px 0 0; color: #1e3a8a; font-size: 14px; line-height: 1.5;">
+          Your ThriveWoo POS subscription for the <strong><%= plan_name %></strong> plan expires tomorrow.
+        </p>
+      </div>
+      <p style="font-size: 14.5px; line-height: 1.6; color: #334155;">
+        Automatic renewal will be attempted using your vaulted payment method on file.
+      </p>
+    <% } else { %>
+      <div style="background: #f8fafc; border-left: 4px solid #6366f1; padding: 14px 18px; border-radius: 8px; margin-bottom: 20px;">
+        <strong style="color: #312e81; font-size: 15px;">🔔 Renewal Reminder</strong>
+        <p style="margin: 6px 0 0; color: #3730a3; font-size: 14px; line-height: 1.5;">
+          Your ThriveWoo POS subscription expires in <strong><%= days_left %> days</strong>.
+        </p>
+      </div>
+      <p style="font-size: 14.5px; line-height: 1.6; color: #334155;">
+        This is an advance courtesy notification to keep your store billing counters running smoothly without service interruption.
+      </p>
+    <% } %>
+
+    <!-- Subscription Summary Table -->
+    <div style="background: #f8fafc; border-radius: 10px; padding: 18px; margin: 24px 0; border: 1px solid #e2e8f0;">
+      <table style="width: 100%; border-collapse: collapse; font-size: 14px;">
+        <tr>
+          <td style="padding: 6px 0; color: #64748b; font-weight: 600;">Store / Terminal:</td>
+          <td style="padding: 6px 0; text-align: right; color: #0f172a; font-weight: 700;"><%= store_name %></td>
+        </tr>
+        <tr>
+          <td style="padding: 6px 0; color: #64748b; font-weight: 600;">Subscription Tier:</td>
+          <td style="padding: 6px 0; text-align: right; color: #4f46e5; font-weight: 700;"><%= plan_name %> Plan (<%= billing_cycle %>)</td>
+        </tr>
+        <tr>
+          <td style="padding: 6px 0; color: #64748b; font-weight: 600;">Renewal Amount:</td>
+          <td style="padding: 6px 0; text-align: right; color: #0f172a; font-weight: 700;">$<%= amount %> <%= currency %></td>
+        </tr>
+        <tr>
+          <td style="padding: 6px 0; color: #64748b; font-weight: 600;">Expiration / Renewal Date:</td>
+          <td style="padding: 6px 0; text-align: right; color: #0f172a; font-weight: 700;"><%= end_date %></td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- Renewal Call to Action -->
+    <div style="text-align: center; margin: 30px 0 20px;">
+      <a href="<%= login_url %>" style="display: inline-block; padding: 13px 32px; background: #4f46e5; color: #ffffff; text-decoration: none; border-radius: 10px; font-weight: 700; font-size: 15px; box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);">
+        <% if (status === 'expired') { %>
+          Renew POS Subscription Now
+        <% } else { %>
+          Manage Subscription &amp; Billing
+        <% } %>
+      </a>
+    </div>
+
+    <!-- Footer -->
+    <div style="border-top: 1px solid #f1f5f9; padding-top: 18px; margin-top: 24px; font-size: 12.5px; color: #94a3b8; text-align: center; line-height: 1.5;">
+      <p style="margin: 0 0 6px;">Thank you for powering your retail counter with ThriveWoo POS.</p>
+      <p style="margin: 0;">Need assistance? Reply directly to this email or reach us at <a href="mailto:support@thrivewoo.com" style="color: #6366f1; text-decoration: none;">support@thrivewoo.com</a></p>
+    </div>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,300 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>POS Hardware Store — Certified Printers, Scanners & Drawers</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="/css/web-styles.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="/" class="brand-logo">
+        <div class="brand-icon"><i class="fas fa-cash-register"></i></div>
+        <span>ThriveWoo<span style="color:var(--primary);">POS</span></span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="/" class="nav-link">Home</a></li>
+        <li><a href="/features" class="nav-link">Features</a></li>
+        <li><a href="/pricing" class="nav-link">Pricing</a></li>
+        <li><a href="/hardware" class="nav-link active">Hardware Store</a></li>
+        <li><a href="/portal" class="nav-link">Customer Portal</a></li>
+        <li><a href="/docs" class="nav-link">Docs & Support</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <!-- Hardware Cart Toggle Button -->
+        <button onclick="hardwareCart.openDrawer()" class="btn btn-secondary btn-sm" style="display:inline-flex;align-items:center;gap:8px;">
+          <i class="fas fa-shopping-cart"></i>
+          <span>Cart</span>
+          <span id="cartBadgeCount" style="display:none;background:var(--primary);color:#fff;font-size:11px;font-weight:700;padding:2px 7px;border-radius:999px;">0</span>
+        </button>
+        <a href="/pos/sale" target="_blank" class="live-demo-pill">
+          <span class="live-pulse"></span> Try POS Demo
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hardware Hero Banner -->
+  <section style="background:linear-gradient(180deg, #f0f4ff 0%, #f8fafc 100%);padding:60px 0 40px 0;text-align:center;">
+    <div class="container" style="max-width:800px;">
+      <span class="badge" style="background:#eef2ff;color:var(--primary);"><i class="fas fa-truck"></i> Ready to Ship</span>
+      <h1 style="font-size:42px;font-weight:900;letter-spacing:-0.03em;margin-bottom:14px;">
+        Certified Commercial POS Hardware
+      </h1>
+      <p style="font-size:17px;color:var(--slate);line-height:1.6;margin-bottom:24px;">
+        100% plug-and-play compatibility with ThriveWoo POS. No complex driver configuration required. Backed by our 1-Year Advance Replacement Warranty.
+      </p>
+
+      <!-- Category Filter Pills -->
+      <div class="hardware-filter-bar">
+        <button class="filter-btn active" data-cat="All">All Hardware</button>
+        <button class="filter-btn" data-cat="Printers">Receipt Printers</button>
+        <button class="filter-btn" data-cat="Scanners">Barcode Scanners</button>
+        <button class="filter-btn" data-cat="Cash Drawers">Cash Drawers</button>
+        <button class="filter-btn" data-cat="Bundles">Bundles & Kits</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Hardware Products Grid -->
+  <section class="section" style="padding-top:20px;">
+    <div class="container">
+      <div class="hardware-grid">
+
+        <!-- Product 1: 80mm Printer -->
+        <div class="hw-card" data-id="hw-01" data-name="ThrivePrint 80mm Thermal Receipt Printer" data-price="149.00" data-cat="Printers">
+          <div class="hw-image-wrap">
+            <span class="hw-badge">Best Seller</span>
+            <i class="fas fa-print" style="font-size:80px;color:#4f46e5;"></i>
+          </div>
+          <div class="hw-body">
+            <span class="hw-category">Thermal Printers</span>
+            <h3 class="hw-title">ThrivePrint 80mm High-Speed Receipt Printer</h3>
+            <ul class="hw-specs">
+              <li>Auto-cutter (1.5M cut rating)</li>
+              <li>260mm/s rapid checkout printing</li>
+              <li>USB + Ethernet LAN + Bluetooth</li>
+              <li>RJ11 cash drawer trigger port</li>
+            </ul>
+            <div class="hw-footer">
+              <div class="hw-price-wrap">
+                <span class="hw-price">$149.00</span>
+                <span class="hw-compare">$189</span>
+              </div>
+              <button class="btn btn-primary btn-sm btn-add-hardware">
+                <i class="fas fa-cart-plus"></i> Add to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 2: 58mm Mobile Printer -->
+        <div class="hw-card" data-id="hw-02" data-name="ThrivePrint 58mm Pocket Thermal Printer" data-price="89.00" data-cat="Printers">
+          <div class="hw-image-wrap">
+            <span class="hw-badge" style="background:#0ea5e9;">Mobile</span>
+            <i class="fas fa-receipt" style="font-size:80px;color:#0ea5e9;"></i>
+          </div>
+          <div class="hw-body">
+            <span class="hw-category">Mobile Printers</span>
+            <h3 class="hw-title">ThrivePrint 58mm Wireless Pocket Printer</h3>
+            <ul class="hw-specs">
+              <li>Bluetooth 5.0 + USB-C</li>
+              <li>2000mAh battery (12h runtime)</li>
+              <li>Compact handheld belt-clip design</li>
+              <li>Compatible with Android & iPad POS</li>
+            </ul>
+            <div class="hw-footer">
+              <div class="hw-price-wrap">
+                <span class="hw-price">$89.00</span>
+                <span class="hw-compare">$119</span>
+              </div>
+              <button class="btn btn-primary btn-sm btn-add-hardware">
+                <i class="fas fa-cart-plus"></i> Add to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 3: Omni Desktop Scanner -->
+        <div class="hw-card" data-id="hw-03" data-name="ThriveScan Omni-Directional 2D Scanner" data-price="119.00" data-cat="Scanners">
+          <div class="hw-image-wrap">
+            <span class="hw-badge" style="background:#10b981;">Hands-Free</span>
+            <i class="fas fa-qrcode" style="font-size:80px;color:#10b981;"></i>
+          </div>
+          <div class="hw-body">
+            <span class="hw-category">Barcode Scanners</span>
+            <h3 class="hw-title">ThriveScan Omni-Directional 1D/2D Desktop Scanner</h3>
+            <ul class="hw-specs">
+              <li>Rapid 360-degree scan window</li>
+              <li>Scans paper barcodes & phone screens</li>
+              <li>USB HID keyboard plug-and-play</li>
+              <li>Adjustable angle with LED confirm</li>
+            </ul>
+            <div class="hw-footer">
+              <div class="hw-price-wrap">
+                <span class="hw-price">$119.00</span>
+                <span class="hw-compare">$149</span>
+              </div>
+              <button class="btn btn-primary btn-sm btn-add-hardware">
+                <i class="fas fa-cart-plus"></i> Add to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 4: Wireless Handheld Barcode Gun -->
+        <div class="hw-card" data-id="hw-04" data-name="ThriveScan Wireless 2D Barcode Gun" data-price="79.00" data-cat="Scanners">
+          <div class="hw-image-wrap">
+            <span class="hw-badge" style="background:#f59e0b;">Wireless</span>
+            <i class="fas fa-barcode" style="font-size:80px;color:#f59e0b;"></i>
+          </div>
+          <div class="hw-body">
+            <span class="hw-category">Barcode Scanners</span>
+            <h3 class="hw-title">ThriveScan Wireless 2D Handheld Laser Gun</h3>
+            <ul class="hw-specs">
+              <li>2.4GHz USB Dongle + Bluetooth (50m range)</li>
+              <li>Drop-tested from 1.5m to concrete</li>
+              <li>Tactile trigger with clear audio beeper</li>
+              <li>Offline memory stores 50,000 scans</li>
+            </ul>
+            <div class="hw-footer">
+              <div class="hw-price-wrap">
+                <span class="hw-price">$79.00</span>
+                <span class="hw-compare">$99</span>
+              </div>
+              <button class="btn btn-primary btn-sm btn-add-hardware">
+                <i class="fas fa-cart-plus"></i> Add to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 5: Steel Cash Drawer -->
+        <div class="hw-card" data-id="hw-05" data-name="ThriveVault Heavy-Duty 5-Bill Cash Drawer" data-price="99.00" data-cat="Cash Drawers">
+          <div class="hw-image-wrap">
+            <span class="hw-badge" style="background:#475569;">Steel Vault</span>
+            <i class="fas fa-vault" style="font-size:80px;color:#475569;"></i>
+          </div>
+          <div class="hw-body">
+            <span class="hw-category">Cash Drawers</span>
+            <h3 class="hw-title">ThriveVault Heavy-Duty 5-Bill Steel Cash Drawer</h3>
+            <ul class="hw-specs">
+              <li>5 Bill Slots (metal wire grips) + 8 Coin Cups</li>
+              <li>Auto-kickout RJ11 cable included</li>
+              <li>3-position key lock (Manual, Auto, Lock)</li>
+              <li>Ball bearing roller suspension</li>
+            </ul>
+            <div class="hw-footer">
+              <div class="hw-price-wrap">
+                <span class="hw-price">$99.00</span>
+                <span class="hw-compare">$129</span>
+              </div>
+              <button class="btn btn-primary btn-sm btn-add-hardware">
+                <i class="fas fa-cart-plus"></i> Add to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 6: Complete Bundle -->
+        <div class="hw-card" data-id="hw-06" data-name="Complete All-In-One Hardware Bundle" data-price="389.00" data-cat="Bundles" style="border-color:var(--primary);box-shadow:0 8px 24px rgba(79,70,229,0.15);">
+          <div class="hw-image-wrap" style="background:var(--primary-light);">
+            <span class="hw-badge" style="background:var(--primary);">Save $110</span>
+            <i class="fas fa-cubes" style="font-size:80px;color:var(--primary);"></i>
+          </div>
+          <div class="hw-body">
+            <span class="hw-category" style="color:var(--primary);font-weight:800;">Complete Store Kit</span>
+            <h3 class="hw-title">All-In-One ThriveWoo Retail Hardware Bundle</h3>
+            <ul class="hw-specs">
+              <li>1x 80mm High-Speed Receipt Printer</li>
+              <li>1x Omni-Directional 1D/2D Barcode Scanner</li>
+              <li>1x Heavy-Duty 5-Bill Cash Drawer</li>
+              <li>1x Aluminum Counter iPad/Tablet Swivel Stand</li>
+              <li>5x Free 80mm BPA-Free Thermal Paper Rolls</li>
+            </ul>
+            <div class="hw-footer">
+              <div class="hw-price-wrap">
+                <span class="hw-price" style="color:var(--primary);">$389.00</span>
+                <span class="hw-compare">$499</span>
+              </div>
+              <button class="btn btn-primary btn-sm btn-add-hardware">
+                <i class="fas fa-cart-plus"></i> Add Bundle to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide-Over Shopping Cart Drawer -->
+  <div id="hardwareCartDrawer" style="position:fixed;top:0;right:0;width:380px;height:100vh;background:#ffffff;box-shadow:-5px 0 25px rgba(0,0,0,0.15);z-index:9999;display:none;flex-direction:column;border-left:1px solid var(--border);">
+    <div style="padding:20px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;">
+      <h3 style="font-size:18px;font-weight:800;color:var(--dark);"><i class="fas fa-shopping-cart"></i> Hardware Cart</h3>
+      <button onclick="hardwareCart.closeDrawer()" style="background:none;border:none;font-size:20px;cursor:pointer;color:#94a3b8;">&times;</button>
+    </div>
+
+    <!-- Items List -->
+    <div id="hardwareCartItems" style="flex-grow:1;overflow-y:auto;padding:20px;">
+      <!-- Populated dynamically by web-main.js -->
+    </div>
+
+    <!-- Checkout Footer -->
+    <div style="padding:20px;border-top:1px solid var(--border);background:#f8fafc;">
+      <div style="display:flex;justify-content:space-between;align-items:center;font-size:16px;font-weight:800;margin-bottom:16px;">
+        <span>Order Subtotal:</span>
+        <span id="hardwareCartSubtotal" style="color:var(--primary);font-size:20px;">$0.00</span>
+      </div>
+      <button onclick="alert('Order placed successfully! A dispatch confirmation has been sent to your email with UPS tracking.'); hardwareCart.items = []; hardwareCart.save(); hardwareCart.render(); hardwareCart.closeDrawer();" class="btn btn-primary btn-lg" style="width:100%;">
+        <i class="fas fa-credit-card"></i> Proceed to Checkout
+      </button>
+      <div style="text-align:center;font-size:12px;color:var(--slate);margin-top:10px;">
+        <i class="fas fa-lock"></i> 256-Bit SSL Encrypted Checkout
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-bottom">
+      <div>&copy; 2026 ThriveWoo POS. All rights reserved.</div>
+      <div style="display:flex;gap:20px;">
+        <a href="/">Home</a>
+        <a href="/features">Features</a>
+        <a href="/pricing">Pricing</a>
+        <a href="/hardware">Hardware</a>
+        <a href="/portal">Customer Portal</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/web/web-main.js"></script>
+  <script>
+    // Category filter interactions
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const cat = btn.getAttribute('data-cat');
+        document.querySelectorAll('.hw-card').forEach(card => {
+          if (cat === 'All' || card.getAttribute('data-cat') === cat) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>

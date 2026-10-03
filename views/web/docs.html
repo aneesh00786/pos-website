@@ -1,0 +1,202 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Documentation & Support — ThriveWoo POS Knowledge Base</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="/css/web-styles.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="/" class="brand-logo">
+        <div class="brand-icon"><i class="fas fa-cash-register"></i></div>
+        <span>ThriveWoo<span style="color:var(--primary);">POS</span></span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="/" class="nav-link">Home</a></li>
+        <li><a href="/features" class="nav-link">Features</a></li>
+        <li><a href="/pricing" class="nav-link">Pricing</a></li>
+        <li><a href="/hardware" class="nav-link">Hardware Store</a></li>
+        <li><a href="/portal" class="nav-link">Customer Portal</a></li>
+        <li><a href="/docs" class="nav-link active">Docs & Support</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="/pos/sale" target="_blank" class="live-demo-pill">
+          <span class="live-pulse"></span> Try POS Demo
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Docs Hero Banner -->
+  <section style="background:linear-gradient(180deg, #f0f4ff 0%, #f8fafc 100%);padding:60px 0 40px 0;text-align:center;">
+    <div class="container" style="max-width:760px;">
+      <span class="badge" style="background:#eef2ff;color:var(--primary);"><i class="fas fa-book-open"></i> Retail Manual</span>
+      <h1 style="font-size:38px;font-weight:900;letter-spacing:-0.03em;margin-bottom:14px;">
+        Documentation & Help Desk
+      </h1>
+      <p style="font-size:16px;color:var(--slate);line-height:1.6;margin-bottom:24px;">
+        Everything you need to configure your checkout lanes, pair ESC/POS thermal printers, configure USB barcode scanners, and reconcile daily cash shifts.
+      </p>
+    </div>
+  </section>
+
+  <!-- Docs Content Grid -->
+  <section class="section" style="padding-top:20px;">
+    <div class="container" style="display:grid;grid-template-columns:300px 1fr;gap:40px;">
+      
+      <!-- Table of Contents Navigation -->
+      <aside>
+        <div style="background:#ffffff;border:1px solid var(--border);border-radius:var(--radius-md);padding:20px;position:sticky;top:100px;">
+          <h4 style="font-size:14px;font-weight:800;color:var(--dark);text-transform:uppercase;margin-bottom:12px;">Guides & Manuals</h4>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:8px;font-size:14px;">
+            <li><a href="#quickstart" style="color:var(--primary);font-weight:600;"><i class="fas fa-rocket"></i> 5-Minute Quickstart</a></li>
+            <li><a href="#printers" style="color:#475569;"><i class="fas fa-print"></i> ESC/POS Printer Pairing</a></li>
+            <li><a href="#scanners" style="color:#475569;"><i class="fas fa-barcode"></i> Barcode Scanner Setup</a></li>
+            <li><a href="#offline" style="color:#475569;"><i class="fas fa-wifi"></i> Offline Vault & Sync</a></li>
+            <li><a href="#shifts" style="color:#475569;"><i class="fas fa-vault"></i> Shifts & Z-Reports</a></li>
+            <li><a href="#support-form" style="color:#475569;"><i class="fas fa-headset"></i> Contact Technical Support</a></li>
+          </ul>
+        </div>
+      </aside>
+
+      <!-- Articles Body -->
+      <main style="display:flex;flex-direction:column;gap:50px;">
+
+        <!-- 1. Quickstart -->
+        <article id="quickstart" style="background:#ffffff;border:1px solid var(--border);border-radius:var(--radius-md);padding:30px;">
+          <h2 style="font-size:24px;font-weight:800;color:var(--dark);margin-bottom:12px;"><i class="fas fa-rocket" style="color:var(--primary);"></i> 5-Minute Quickstart Guide</h2>
+          <p style="font-size:15px;color:var(--slate);line-height:1.6;margin-bottom:16px;">
+            Getting started with ThriveWoo POS takes less than 5 minutes on any device running a modern browser:
+          </p>
+          <ol style="padding-left:20px;display:flex;flex-direction:column;gap:10px;font-size:14px;color:#334155;">
+            <li><strong>Obtain a License Key:</strong> Sign up for a 14-day free trial on our <a href="/pricing">Pricing Page</a> or generate a key inside your <a href="/portal">Customer Portal</a>.</li>
+            <li><strong>Launch the Terminal:</strong> Navigate to <code>/pos/sale</code> on your store's computer or tablet.</li>
+            <li><strong>Sign In / Unlock:</strong> Enter your 4-digit cashier PIN (default demo PIN: <code>1234</code> or <code>0000</code>).</li>
+            <li><strong>Declare Shift Opening Float:</strong> Enter the initial cash in the drawer (e.g. $150.00) to open the register.</li>
+            <li><strong>Scan and Ring Up:</strong> Use a USB barcode gun or click items on the screen to add them to the ticket and tender payment.</li>
+          </ol>
+        </article>
+
+        <!-- 2. Printer Setup -->
+        <article id="printers" style="background:#ffffff;border:1px solid var(--border);border-radius:var(--radius-md);padding:30px;">
+          <h2 style="font-size:24px;font-weight:800;color:var(--dark);margin-bottom:12px;"><i class="fas fa-print" style="color:var(--secondary);"></i> ESC/POS Thermal Printer Configuration</h2>
+          <p style="font-size:15px;color:var(--slate);line-height:1.6;margin-bottom:16px;">
+            ThriveWoo POS generates pixel-perfect receipts formatted for standard 80mm and 58mm thermal rolls.
+          </p>
+          <div style="background:#f8fafc;border-left:4px solid var(--primary);padding:14px;border-radius:4px;font-size:14px;color:#334155;margin-bottom:16px;">
+            <strong>Pro Tip:</strong> For USB and network receipt printers, set your default browser print margins to <em>"None"</em> and disable <em>"Headers and footers"</em> for seamless thermal cuts.
+          </div>
+          <p style="font-size:14px;color:var(--slate);line-height:1.6;">
+            To test your printer, navigate to <strong>Settings &rarr; Receipt Printer</strong> in the POS terminal and click <em>"Send Test Print"</em>.
+          </p>
+        </article>
+
+        <!-- 3. Scanner Setup -->
+        <article id="scanners" style="background:#ffffff;border:1px solid var(--border);border-radius:var(--radius-md);padding:30px;">
+          <h2 style="font-size:24px;font-weight:800;color:var(--dark);margin-bottom:12px;"><i class="fas fa-barcode" style="color:var(--accent);"></i> USB & Camera Barcode Scanner Setup</h2>
+          <p style="font-size:15px;color:var(--slate);line-height:1.6;margin-bottom:16px;">
+            ThriveWoo POS features a global keystroke listener that intercepts barcode input anywhere on the screen:
+          </p>
+          <ul style="padding-left:20px;display:flex;flex-direction:column;gap:10px;font-size:14px;color:#334155;">
+            <li><strong>USB/HID Scanners:</strong> Simply plug the USB cable into your terminal. No configuration or drivers needed. The scanner sends rapid keystrokes with an ENTER terminator which the POS immediately captures.</li>
+            <li><strong>Camera Scanner:</strong> Click the camera icon in the search bar on tablets or laptops to open the live video viewfinder. It utilizes the hardware-accelerated <code>BarcodeDetector</code> API with Web Audio beep feedback.</li>
+          </ul>
+        </article>
+
+        <!-- 4. Support Ticket Submission Form -->
+        <article id="support-form" style="background:#ffffff;border:1px solid var(--border);border-radius:var(--radius-md);padding:30px;">
+          <h2 style="font-size:24px;font-weight:800;color:var(--dark);margin-bottom:12px;"><i class="fas fa-headset" style="color:var(--primary);"></i> Submit a Helpdesk Support Ticket</h2>
+          <p style="font-size:14px;color:var(--slate);margin-bottom:20px;">
+            Have a question or need assistance with your POS hardware setup? Our engineering team responds within 2 hours.
+          </p>
+
+          <form id="supportTicketForm" onsubmit="event.preventDefault(); handleTicketSubmit();">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
+              <div>
+                <label style="display:block;font-size:13px;font-weight:700;margin-bottom:6px;">Your Name</label>
+                <input type="text" id="tktName" required placeholder="Marcus Vance" style="width:100%;padding:10px 14px;border:1px solid var(--border);border-radius:8px;font-size:14px;">
+              </div>
+              <div>
+                <label style="display:block;font-size:13px;font-weight:700;margin-bottom:6px;">Registered Account Email</label>
+                <input type="email" id="tktEmail" required placeholder="marcus@greenleaf.com" style="width:100%;padding:10px 14px;border:1px solid var(--border);border-radius:8px;font-size:14px;">
+              </div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
+              <div>
+                <label style="display:block;font-size:13px;font-weight:700;margin-bottom:6px;">Category</label>
+                <select id="tktCategory" style="width:100%;padding:10px 14px;border:1px solid var(--border);border-radius:8px;font-size:14px;background:#ffffff;">
+                  <option value="Hardware Setup">Thermal Printer / Hardware Setup</option>
+                  <option value="License Activation">License Key Activation</option>
+                  <option value="Billing & Payments">Pine Labs / Payment Tenders</option>
+                  <option value="General Inquiries">General Question</option>
+                </select>
+              </div>
+              <div>
+                <label style="display:block;font-size:13px;font-weight:700;margin-bottom:6px;">Subject</label>
+                <input type="text" id="tktSubject" required placeholder="e.g. Setting up 80mm printer on Windows" style="width:100%;padding:10px 14px;border:1px solid var(--border);border-radius:8px;font-size:14px;">
+              </div>
+            </div>
+            <div style="margin-bottom:20px;">
+              <label style="display:block;font-size:13px;font-weight:700;margin-bottom:6px;">Description / Error Details</label>
+              <textarea id="tktMessage" required placeholder="Describe your question or issue in detail..." style="width:100%;padding:10px 14px;border:1px solid var(--border);border-radius:8px;font-size:14px;height:90px;"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">
+              <i class="fas fa-paper-plane"></i> Submit Support Ticket
+            </button>
+          </form>
+        </article>
+
+      </main>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-bottom">
+      <div>&copy; 2026 ThriveWoo POS. All rights reserved.</div>
+      <div style="display:flex;gap:20px;">
+        <a href="/">Home</a>
+        <a href="/features">Features</a>
+        <a href="/pricing">Pricing</a>
+        <a href="/hardware">Hardware</a>
+        <a href="/portal">Customer Portal</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/web/web-main.js"></script>
+  <script>
+    async function handleTicketSubmit() {
+      const name = document.getElementById('tktName').value;
+      const email = document.getElementById('tktEmail').value;
+      const category = document.getElementById('tktCategory').value;
+      const subject = document.getElementById('tktSubject').value;
+      const message = document.getElementById('tktMessage').value;
+
+      try {
+        const res = await fetch('/api/web/tickets/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name, email, category, subject, message })
+        });
+        const json = await res.json();
+        alert(json.message || 'Ticket submitted successfully!');
+        document.getElementById('supportTicketForm').reset();
+      } catch (err) {
+        alert('Thank you! Ticket submitted.');
+        document.getElementById('supportTicketForm').reset();
+      }
+    }
+  </script>
+</body>
+</html>

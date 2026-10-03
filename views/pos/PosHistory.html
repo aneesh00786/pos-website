@@ -1,0 +1,140 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ThriveWoo POS — Sales History & Receipts</title>
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/pos-styles.css">
+</head>
+<body class="pos-body">
+
+  <header class="pos-header">
+    <div class="d-flex align-items-center gap-3">
+      <a href="/pos/dashboard" class="pos-brand">
+        <div class="pos-brand-icon"><i class="bi bi-cart4"></i></div>
+        <div>
+          <div class="pos-brand-title">ThriveWoo <span class="pos-brand-badge">POS</span></div>
+          <div class="pos-brand-sub">Completed Sales Ledger &amp; Receipts</div>
+        </div>
+      </a>
+    </div>
+    <div class="d-flex align-items-center gap-2">
+      <a href="/pos/sale" class="btn btn-primary btn-sm fw-bold px-3">
+        <i class="bi bi-calculator me-1"></i> Back to Billing
+      </a>
+    </div>
+  </header>
+
+  <nav class="pos-subnav">
+    <a href="/pos/dashboard" class="pos-subnav-item"><i class="bi bi-speedometer2"></i> Dashboard</a>
+    <a href="/pos/sale" class="pos-subnav-item"><i class="bi bi-calculator"></i> New Sale</a>
+    <a href="/pos/held" class="pos-subnav-item"><i class="bi bi-pause-circle"></i> Held Sales</a>
+    <a href="/pos/history" class="pos-subnav-item active"><i class="bi bi-receipt"></i> Sales History</a>
+    <a href="/pos/products" class="pos-subnav-item"><i class="bi bi-box-seam"></i> Products</a>
+    <a href="/pos/customers" class="pos-subnav-item"><i class="bi bi-people"></i> Customers</a>
+    <a href="/pos/promotions" class="pos-subnav-item"><i class="bi bi-tag"></i> Promotions</a>
+    <a href="/pos/inventory" class="pos-subnav-item"><i class="bi bi-boxes"></i> Inventory</a>
+    <a href="/pos/shifts" class="pos-subnav-item"><i class="bi bi-safe"></i> Shifts</a>
+    <a href="/pos/reports" class="pos-subnav-item"><i class="bi bi-bar-chart-line"></i> Reports</a>
+    <a href="/pos/settings" class="pos-subnav-item"><i class="bi bi-sliders"></i> Settings</a>
+  </nav>
+
+  <div class="container-fluid p-4" style="max-width:1300px;">
+    
+    <!-- Filter Bar -->
+    <div class="card border-0 shadow-sm rounded-3 mb-4 p-3 bg-white">
+      <div class="row g-2 align-items-center">
+        <div class="col-md-4">
+          <input type="text" id="pos-hist-search" class="form-control form-control-sm" placeholder="Search by invoice number or customer name..." oninput="PosHistory.loadSales({ search: this.value })">
+        </div>
+        <div class="col-md-3">
+          <input type="date" id="pos-hist-date" class="form-control form-control-sm" onchange="PosHistory.loadSales({ date: this.value })">
+        </div>
+        <div class="col-md-3">
+          <select id="pos-hist-tender" class="form-select form-select-sm" onchange="PosHistory.loadSales({ payment_method: this.value })">
+            <option value="all">All Payment Tenders</option>
+            <option value="Cash">Cash</option>
+            <option value="Card">Card</option>
+            <option value="UPI">UPI</option>
+          </select>
+        </div>
+        <div class="col-md-2 text-end">
+          <button class="btn btn-outline-secondary btn-sm w-100" onclick="PosHistory.loadSales()">
+            <i class="bi bi-arrow-clockwise me-1"></i> Reset
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sales Table -->
+    <div class="card border-0 shadow-sm rounded-3">
+      <div class="card-header bg-white border-bottom py-3">
+        <h5 class="fw-bold mb-0"><i class="bi bi-receipt text-primary me-2"></i>Sales Ledger</h5>
+      </div>
+      <div class="card-body p-0">
+        <div class="table-responsive">
+          <table class="table table-hover align-middle mb-0">
+            <thead class="table-light small">
+              <tr>
+                <th>#</th>
+                <th>Invoice No</th>
+                <th>Date &amp; Time</th>
+                <th>Customer</th>
+                <th>Tender</th>
+                <th>Items</th>
+                <th>Total</th>
+                <th class="text-end">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="pos-history-tbody" class="small">
+              <!-- Dynamically populated -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Thermal Receipt Modal -->
+  <div class="modal fade" id="posReceiptModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content border-0 shadow-lg" style="border-radius:16px; overflow:hidden;">
+        <div class="modal-header border-bottom px-4 py-3 bg-light">
+          <h5 class="modal-title fw-bold"><i class="bi bi-printer me-2 text-primary"></i>Reprint Receipt</h5>
+          <div class="btn-group btn-group-sm ms-auto me-2">
+            <button class="btn btn-outline-secondary pos-receipt-format-btn" data-format="thermal_58mm" onclick="PosReceipt.setFormat('thermal_58mm')">58mm</button>
+            <button class="btn btn-outline-secondary pos-receipt-format-btn active" data-format="thermal_80mm" onclick="PosReceipt.setFormat('thermal_80mm')">80mm</button>
+          </div>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="pos-receipt-preview-wrap">
+          <div id="pos-receipt-content" class="pos-thermal-receipt format-80mm"></div>
+        </div>
+        <div class="modal-footer border-top px-4 py-3 bg-light d-flex justify-content-between">
+          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary fw-bold px-4" onclick="PosReceipt.printReceipt()">
+            <i class="bi bi-printer me-1"></i> Print Receipt
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/pos/pos-utils.js"></script>
+  <script src="/js/pos/pos-api.js"></script>
+  <script src="/js/pos/pos-receipt.js"></script>
+  <script src="/js/pos/pos-history.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      PosHistory.init();
+    });
+  </script>
+</body>
+</html>

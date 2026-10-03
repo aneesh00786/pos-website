@@ -1,0 +1,257 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customer License & Downloads Portal — ThriveWoo POS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="/css/web-styles.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="/" class="brand-logo">
+        <div class="brand-icon"><i class="fas fa-cash-register"></i></div>
+        <span>ThriveWoo<span style="color:var(--primary);">POS</span></span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="/" class="nav-link">Home</a></li>
+        <li><a href="/features" class="nav-link">Features</a></li>
+        <li><a href="/pricing" class="nav-link">Pricing</a></li>
+        <li><a href="/hardware" class="nav-link">Hardware Store</a></li>
+        <li><a href="/portal" class="nav-link active">Customer Portal</a></li>
+        <li><a href="/docs" class="nav-link">Docs & Support</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="/pos/sale" target="_blank" class="live-demo-pill">
+          <span class="live-pulse"></span> Try POS Demo
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Portal Header Bar -->
+  <section class="portal-header">
+    <div class="container" style="display:flex;justify-content:space-between;align-items:center;">
+      <div>
+        <div style="font-size:12px;font-weight:800;color:var(--primary);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:4px;">
+          RETAIL ACCOUNT #ACC-78291
+        </div>
+        <h1 style="font-size:28px;font-weight:900;color:var(--dark);">Sarah Jenkins — Harborview Market</h1>
+        <div style="font-size:14px;color:var(--slate);">sarah@harborview.com • Plan: <strong style="color:var(--primary);">Professional Annual (3 Registers)</strong></div>
+      </div>
+      <div>
+        <button id="btnGenerateLicense" class="btn btn-primary">
+          <i class="fas fa-key"></i> Generate Register License
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portal Workspace -->
+  <section class="section" style="padding-top:30px;">
+    <div class="container portal-grid">
+      
+      <!-- Sidebar Navigation -->
+      <aside class="portal-sidebar">
+        <div class="portal-nav-item active" data-tab="licenses">
+          <i class="fas fa-key"></i> <span>License Keys</span>
+        </div>
+        <div class="portal-nav-item" data-tab="downloads">
+          <i class="fas fa-download"></i> <span>Download Apps</span>
+        </div>
+        <div class="portal-nav-item" data-tab="invoices">
+          <i class="fas fa-file-invoice-dollar"></i> <span>Invoices & Billing</span>
+        </div>
+        <div class="portal-nav-item" data-tab="settings">
+          <i class="fas fa-sliders-h"></i> <span>Store Profile</span>
+        </div>
+        <hr style="border:none;border-top:1px solid var(--border);margin:16px 0;">
+        <a href="/pos/sale" target="_blank" class="portal-nav-item" style="color:var(--primary);">
+          <i class="fas fa-external-link-alt"></i> <span>Open Web Register</span>
+        </a>
+      </aside>
+
+      <!-- Main Portal Content -->
+      <main>
+        
+        <!-- Tab 1: Licenses -->
+        <div class="portal-panel" id="tab-licenses">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+            <div>
+              <h3 style="font-size:18px;font-weight:800;color:var(--dark);">Active Register Licenses</h3>
+              <p style="font-size:13px;color:var(--slate);">Each checkout lane requires an authorized license key to link with your cloud ledger.</p>
+            </div>
+          </div>
+
+          <table class="license-table">
+            <thead>
+              <tr>
+                <th>License Key</th>
+                <th>Station Assignment</th>
+                <th>Device Platform</th>
+                <th>Last Active Sync</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="licenseTableBody">
+              <!-- Rendered dynamically by portal.js -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Tab 2: Downloads -->
+        <div class="portal-panel" id="tab-downloads" style="display:none;">
+          <h3 style="font-size:18px;font-weight:800;color:var(--dark);margin-bottom:6px;">Software Download Center</h3>
+          <p style="font-size:13px;color:var(--slate);margin-bottom:24px;">Download desktop, tablet, and driver packages for your checkout registers.</p>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+            <!-- Windows -->
+            <div style="border:1px solid var(--border);border-radius:var(--radius-sm);padding:20px;display:flex;gap:16px;">
+              <i class="fab fa-windows" style="font-size:40px;color:#0ea5e9;"></i>
+              <div style="flex-grow:1;">
+                <div style="font-weight:700;font-size:15px;">ThriveWoo POS for Windows</div>
+                <div style="font-size:13px;color:var(--slate);margin-bottom:10px;">v2.4.1 • 78.4 MB (64-Bit EXE)</div>
+                <button onclick="alert('Downloading ThriveWoo-POS-Setup-v2.4.1.exe...')" class="btn btn-secondary btn-sm">
+                  <i class="fas fa-download"></i> Download Setup
+                </button>
+              </div>
+            </div>
+
+            <!-- macOS -->
+            <div style="border:1px solid var(--border);border-radius:var(--radius-sm);padding:20px;display:flex;gap:16px;">
+              <i class="fab fa-apple" style="font-size:40px;color:#0f172a;"></i>
+              <div style="flex-grow:1;">
+                <div style="font-weight:700;font-size:15px;">ThriveWoo POS for macOS</div>
+                <div style="font-size:13px;color:var(--slate);margin-bottom:10px;">v2.4.1 • 84.2 MB (Apple Silicon & Intel)</div>
+                <button onclick="alert('Downloading ThriveWoo-POS-v2.4.1.dmg...')" class="btn btn-secondary btn-sm">
+                  <i class="fas fa-download"></i> Download DMG
+                </button>
+              </div>
+            </div>
+
+            <!-- Android -->
+            <div style="border:1px solid var(--border);border-radius:var(--radius-sm);padding:20px;display:flex;gap:16px;">
+              <i class="fab fa-android" style="font-size:40px;color:#10b981;"></i>
+              <div style="flex-grow:1;">
+                <div style="font-weight:700;font-size:15px;">ThriveWoo POS Android Tablet</div>
+                <div style="font-size:13px;color:var(--slate);margin-bottom:10px;">v2.4.1 • 34.1 MB (Universal APK)</div>
+                <button onclick="alert('Downloading thrivewoo-pos-v2.4.1.apk...')" class="btn btn-secondary btn-sm">
+                  <i class="fas fa-download"></i> Download APK
+                </button>
+              </div>
+            </div>
+
+            <!-- ESC/POS Drivers -->
+            <div style="border:1px solid var(--border);border-radius:var(--radius-sm);padding:20px;display:flex;gap:16px;">
+              <i class="fas fa-print" style="font-size:40px;color:#4f46e5;"></i>
+              <div style="flex-grow:1;">
+                <div style="font-weight:700;font-size:15px;">ESC/POS Universal Thermal Drivers</div>
+                <div style="font-size:13px;color:var(--slate);margin-bottom:10px;">USB & Virtual COM Drivers • 14.2 MB</div>
+                <button onclick="alert('Downloading ESCPOS_Universal_Drivers.zip...')" class="btn btn-secondary btn-sm">
+                  <i class="fas fa-download"></i> Download Driver ZIP
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 3: Invoices -->
+        <div class="portal-panel" id="tab-invoices" style="display:none;">
+          <h3 style="font-size:18px;font-weight:800;color:var(--dark);margin-bottom:6px;">Billing Invoices & Receipts</h3>
+          <p style="font-size:13px;color:var(--slate);margin-bottom:20px;">Download official tax invoices for your subscription renewals and hardware purchases.</p>
+
+          <table class="license-table">
+            <thead>
+              <tr>
+                <th>Invoice #</th>
+                <th>Billing Date</th>
+                <th>Amount</th>
+                <th>Description</th>
+                <th>Status</th>
+                <th>Download</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="font-weight:700;">INV-2026-0041</td>
+                <td>2026-04-15</td>
+                <td style="font-weight:700;">$768.00</td>
+                <td>ThriveWoo POS Professional Annual Subscription (3 Registers)</td>
+                <td><span style="background:#ecfdf5;color:#059669;font-size:12px;font-weight:700;padding:4px 10px;border-radius:999px;">Paid</span></td>
+                <td><button onclick="alert('Downloading Invoice PDF #INV-2026-0041...')" style="background:none;border:none;color:var(--primary);cursor:pointer;font-weight:600;"><i class="fas fa-file-pdf"></i> PDF</button></td>
+              </tr>
+              <tr>
+                <td style="font-weight:700;">INV-2026-0089</td>
+                <td>2026-05-02</td>
+                <td style="font-weight:700;">$389.00</td>
+                <td>All-In-One Hardware Bundle (Order #HW-7712)</td>
+                <td><span style="background:#ecfdf5;color:#059669;font-size:12px;font-weight:700;padding:4px 10px;border-radius:999px;">Paid</span></td>
+                <td><button onclick="alert('Downloading Invoice PDF #INV-2026-0089...')" style="background:none;border:none;color:var(--primary);cursor:pointer;font-weight:600;"><i class="fas fa-file-pdf"></i> PDF</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Tab 4: Settings -->
+        <div class="portal-panel" id="tab-settings" style="display:none;">
+          <h3 style="font-size:18px;font-weight:800;color:var(--dark);margin-bottom:16px;">Store Configuration</h3>
+          <form onsubmit="event.preventDefault(); alert('Store profile updated successfully!');">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
+              <div>
+                <label style="display:block;font-size:13px;font-weight:700;margin-bottom:6px;">Trading Store Name</label>
+                <input type="text" value="Harborview Market & Cafe" style="width:100%;padding:10px 14px;border:1px solid var(--border);border-radius:8px;font-size:14px;">
+              </div>
+              <div>
+                <label style="display:block;font-size:13px;font-weight:700;margin-bottom:6px;">Tax Registration # (GST/VAT)</label>
+                <input type="text" value="GST-98234-AU" style="width:100%;padding:10px 14px;border:1px solid var(--border);border-radius:8px;font-size:14px;">
+              </div>
+            </div>
+            <div style="margin-bottom:20px;">
+              <label style="display:block;font-size:13px;font-weight:700;margin-bottom:6px;">Receipt Footer Custom Message</label>
+              <textarea style="width:100%;padding:10px 14px;border:1px solid var(--border);border-radius:8px;font-size:14px;height:70px;">Thank you for shopping at Harborview! Visit harborview.com for seasonal deals.</textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+          </form>
+        </div>
+
+      </main>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-bottom">
+      <div>&copy; 2026 ThriveWoo POS. All rights reserved.</div>
+      <div style="display:flex;gap:20px;">
+        <a href="/">Home</a>
+        <a href="/features">Features</a>
+        <a href="/pricing">Pricing</a>
+        <a href="/hardware">Hardware</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/web/web-main.js"></script>
+  <script src="/js/web/portal.js"></script>
+  <script>
+    // Tab switching
+    document.querySelectorAll('.portal-nav-item[data-tab]').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.portal-nav-item').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        const target = tab.getAttribute('data-tab');
+        document.querySelectorAll('.portal-panel').forEach(p => p.style.display = 'none');
+        document.getElementById(`tab-${target}`).style.display = 'block';
+      });
+    });
+  </script>
+</body>
+</html>

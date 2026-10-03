@@ -1,0 +1,22 @@
+{
+  "currentShift": {
+    "id": "SHIFT-20260928-01",
+    "register_id": "REG-01",
+    "cashier_id": "STF-001",
+    "cashier_name": "Alex Morgan",
+    "opened_at": "2026-09-28T05:01:41.178Z",
+    "opening_float": 250,
+    "status": "open",
+    "summary": {
+      "cash_sales": 0,
+      "card_sales": 0,
+      "upi_sales": 0,
+      "other_sales": 0,
+      "total_sales": 0,
+      "total_tax": 0,
+      "total_discount": 0,
+      "transaction_count": 1
+    }
+  },
+  "history": []
+}

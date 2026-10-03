@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ThriveWoo POS — Modern Retail Point of Sale & Billing Platform</title>
+  <link rel="shortcut icon" href="/img/favicon.png" type="image/x-icon">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="/css/web-styles.css">
+
+  <style>
+    :root {
+      --primary: #4f46e5;
+      --primary-dark: #3730a3;
+      --primary-light: #eef2ff;
+      --secondary: #0ea5e9;
+      --accent: #10b981;
+      --dark: #0f172a;
+      --slate: #64748b;
+      --light-bg: #f8fafc;
+      --border: #e2e8f0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      color: var(--dark);
+      background-color: #ffffff;
+      line-height: 1.6;
+    }
+
+    .top-promo-bar {
+      background: #0f172a;
+      color: #f8fafc;
+      padding: 10px 16px;
+      font-size: 13.5px;
+      text-align: center;
+      font-weight: 600;
+    }
+    .top-promo-bar a {
+      color: #38bdf8;
+      text-decoration: underline;
+      margin-left: 8px;
+    }
+
+    .site-nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-wrapper {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 74px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--dark);
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+    .nav-brand-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+    }
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-menu a {
+      color: #475569;
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+    .nav-menu a:hover {
+      color: var(--primary);
+    }
+    .nav-btns {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .hero {
+      padding: 80px 0 90px 0;
+      background: radial-gradient(circle at 10% 10%, rgba(99, 102, 241, 0.08) 0%, transparent 40%),
+                  radial-gradient(circle at 90% 90%, rgba(14, 165, 233, 0.07) 0%, transparent 40%),
+                  #f8fafc;
+      border-bottom: 1px solid var(--border);
+    }
+    .hero-container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .hero-h1 {
+      font-size: 52px;
+      font-weight: 900;
+      line-height: 1.15;
+      letter-spacing: -1.5px;
+      color: var(--dark);
+      margin-bottom: 24px;
+    }
+    .hero-lead {
+      font-size: 19px;
+      color: var(--slate);
+      line-height: 1.6;
+      margin-bottom: 36px;
+    }
+    .hero-cta-group {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 36px;
+    }
+
+    .features-section {
+      padding: 90px 0;
+      background: #ffffff;
+    }
+    .section-head {
+      text-align: center;
+      max-width: 780px;
+      margin: 0 auto 56px auto;
+    }
+    .pill-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--primary-light);
+      color: var(--primary);
+      padding: 6px 16px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 16px;
+    }
+    .section-head h2 {
+      font-size: 38px;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+      color: var(--dark);
+    }
+    .section-head p {
+      font-size: 18px;
+      color: var(--slate);
+    }
+
+    .pos-features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 28px;
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .feature-box {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 32px 28px;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.04);
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    .feature-box:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 30px -10px rgba(0,0,0,0.08);
+      border-color: #cbd5e1;
+    }
+    .feature-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+    .feature-box h3 {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--dark);
+      margin-bottom: 12px;
+    }
+    .feature-box p {
+      font-size: 14.5px;
+      color: var(--slate);
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+    .feature-bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 13.5px;
+      color: #334155;
+    }
+    .feature-bullets li i {
+      color: var(--accent);
+      margin-right: 8px;
+    }
+
+    .selling-points-section {
+      background: #0f172a;
+      color: #ffffff;
+      padding: 80px 0;
+    }
+    .selling-grid {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+    .selling-item {
+      background: #1e293b;
+      border-radius: 16px;
+      padding: 24px;
+      border: 1px solid #334155;
+    }
+    .selling-item h4 {
+      font-size: 17px;
+      font-weight: 700;
+      color: #38bdf8;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .selling-item p {
+      font-size: 14px;
+      color: #cbd5e1;
+      line-height: 1.5;
+    }
+
+    .pricing-sec {
+      padding: 90px 0;
+      background: #f8fafc;
+      border-top: 1px solid var(--border);
+    }
+    .pricing-cards {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+    .pricing-card {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 40px 32px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+    .pricing-card.featured {
+      border-color: var(--primary);
+      box-shadow: 0 20px 40px -15px rgba(79, 70, 229, 0.25);
+      transform: scale(1.02);
+    }
+    .popular-tag {
+      position: absolute;
+      top: -14px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--primary);
+      color: #ffffff;
+      font-size: 12px;
+      font-weight: 800;
+      padding: 4px 16px;
+      border-radius: 999px;
+      letter-spacing: 0.05em;
+    }
+
+    @media (max-width: 992px) {
+      .hero-container { grid-template-columns: 1fr; }
+      .selling-grid { grid-template-columns: 1fr; }
+      .pricing-cards { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Announcement -->
+  <div class="top-promo-bar">
+    ⚡ <strong>Launch Offer:</strong> Start your 14-day free trial today. Includes full barcode scanning, multi-tender payments & ESC/POS receipts!
+    <a href="/register">Register Now &rarr;</a>
+  </div>
+
+  <!-- Navigation -->
+  <header class="site-nav">
+    <div class="nav-wrapper">
+      <a href="/" class="nav-brand">
+        <div class="nav-brand-icon"><i class="fas fa-cash-register"></i></div>
+        <span>ThriveWoo<strong>POS</strong></span>
+      </a>
+
+      <ul class="nav-menu">
+        <li><a href="#features">Features</a></li>
+        <li><a href="#selling-points">Key Selling Points</a></li>
+        <li><a href="#pricing">Pricing Plans</a></li>
+      </ul>
+
+      <div class="nav-btns">
+        <a href="/login" class="btn btn-secondary btn-sm" style="font-weight:700;">Sign In</a>
+        <a href="/register" class="btn btn-primary btn-sm" style="font-weight:700;">Start Free Trial</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-container">
+      <div>
+        <div class="pill-badge"><i class="bi bi-lightning-charge-fill"></i> Complete Retail POS Solution</div>
+        <h1 class="hero-h1">Fast, Smart &amp; Reliable Retail POS Billing System.</h1>
+        <p class="hero-lead">
+          Built for modern retailers, grocers, and boutiques. Instant barcode scanning, multi-tender payments (Cash, Card, UPI &amp; Pine Labs), live stock synchronization, and 100% offline billing vault.
+        </p>
+
+        <div class="hero-cta-group">
+          <a href="/register?plan=pro" class="btn btn-primary btn-lg" style="font-size:16px;">
+            <i class="bi bi-shield-check"></i> Start 14-Day Free Trial
+          </a>
+          <a href="/login" class="btn btn-secondary btn-lg" style="font-size:16px;">
+            <i class="bi bi-box-arrow-in-right"></i> Staff / Owner Login
+          </a>
+        </div>
+
+        <div style="display:flex;gap:20px;font-size:13.5px;color:var(--slate);font-weight:600;flex-wrap:wrap;">
+          <span><i class="bi bi-check-circle-fill text-success"></i> 14 Days Free Trial</span>
+          <span><i class="bi bi-check-circle-fill text-success"></i> No Credit Card Required Today</span>
+          <span><i class="bi bi-check-circle-fill text-success"></i> 100% Offline Capable</span>
+        </div>
+      </div>
+
+      <!-- Hero Visual Card -->
+      <div style="background:#0f172a;border-radius:24px;padding:24px;color:#ffffff;box-shadow:0 25px 50px -12px rgba(15,23,42,0.35);border:1px solid #334155;">
+        <div style="display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #1e293b;padding-bottom:12px;margin-bottom:16px;">
+          <div style="display:flex;gap:6px;">
+            <span style="width:10px;height:10px;border-radius:50%;background:#ef4444;"></span>
+            <span style="width:10px;height:10px;border-radius:50%;background:#f59e0b;"></span>
+            <span style="width:10px;height:10px;border-radius:50%;background:#10b981;"></span>
+          </div>
+          <span style="font-size:12px;font-weight:700;color:#38bdf8;">ACTIVE REGISTER #01</span>
+        </div>
+
+        <div style="background:#1e293b;border-radius:12px;padding:16px;margin-bottom:14px;">
+          <div style="font-size:11px;color:#94a3b8;font-weight:700;text-transform:uppercase;margin-bottom:8px;">Active Sale #POS-2026-1049</div>
+          <div style="display:flex;justify-content:space-between;font-size:13.5px;padding:6px 0;border-bottom:1px dashed #334155;">
+            <span>Artisan Cold Brew Coffee (1x)</span>
+            <span style="font-weight:700;">$4.50</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:13.5px;padding:6px 0;border-bottom:1px dashed #334155;">
+            <span>Organic Almond Granola (2x)</span>
+            <span style="font-weight:700;">$13.00</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:13.5px;padding:6px 0;">
+            <span>Sourdough Country Loaf (1x)</span>
+            <span style="font-weight:700;">$5.20</span>
+          </div>
+        </div>
+
+        <div style="display:flex;justify-content:space-between;align-items:baseline;padding:8px 0;border-top:1px solid #334155;margin-bottom:16px;">
+          <span style="font-size:14px;color:#94a3b8;">Total (GST 10% Included):</span>
+          <span style="font-size:24px;font-weight:900;color:#4ade80;">$22.70</span>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(3, 1fr);gap:8px;text-align:center;font-size:12px;font-weight:700;">
+          <div style="background:#334155;padding:10px 4px;border-radius:8px;"><i class="fas fa-money-bill-wave"></i> Cash</div>
+          <div style="background:#4f46e5;padding:10px 4px;border-radius:8px;"><i class="fas fa-credit-card"></i> Card / Pine Labs</div>
+          <div style="background:#334155;padding:10px 4px;border-radius:8px;"><i class="fas fa-qrcode"></i> UPI QR</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Complete 20-Feature POS Breakdown -->
+  <section class="features-section" id="features">
+    <div class="section-head">
+      <span class="pill-badge"><i class="bi bi-grid-3x3-gap-fill"></i> Complete Specifications</span>
+      <h2>Everything Your Retail Checkout Needs</h2>
+      <p>All 20 modules from our complete POS specification document — engineered to handle rush hours, stock control, and financial reconciliation.</p>
+    </div>
+
+    <div class="pos-features-grid">
+      
+      <!-- 1. Modern POS Billing -->
+      <div class="feature-box">
+        <div class="feature-icon" style="background:#eef2ff;color:#4f46e5;"><i class="fas fa-cash-register"></i></div>
+        <h3>1. Modern POS Billing System</h3>
+        <p>Fast, tactile split-screen checkout. Create new sales, filter by category, sort A-Z, view real-time stock availability, and browse grid or list view.</p>
+        <ul class="feature-bullets">
+          <li><i class="bi bi-check2"></i> Fast &amp; simple cashier interface</li>
+          <li><i class="bi bi-check2"></i> USB/HID &amp; Camera scanning</li>
+          <li><i class="bi bi-check2"></i> Responsive desktop, tablet &amp; POS</li>
+        </ul>
+      </div>
+
+      <!-- 2. Shopping Cart -->
+      <div class="feature-box">
+        <div class="feature-icon" style="background:#ecfdf5;color:#10b981;"><i class="fas fa-shopping-basket"></i></div>
+        <h3>2. Shopping Cart / Current Sale</h3>
+        <p>Instant reactive cart ticket. Add products, use touch +/- quantity steppers or manual numeric keypad, apply item discounts, and clear cart in 1 click.</p>
+        <ul class="feature-bullets">
+          <li><i class="bi bi-check2"></i> Zero page refresh recalculation</li>
+          <li><i class="bi bi-check2"></i> Subtotal, tax and discount lines</li>
+          <li><i class="bi bi-check2"></i> Live stock validation guards</li>
+        </ul>
+      </div>
+
+      <!-- 3. Tax Management -->
+      <div class="feature-box">
+        <div class="feature-icon" style="background:#fef3c7;color:#d97706;"><i class="fas fa-percent"></i></div>
+        <h3>3. Tax Management</h3>
+        <p>Category-based automatic tax calculation. Supports tax-inclusive pricing, tax-exclusive pricing, zero-tax goods, and consistent currency rounding.</p>
+        <ul class="feature-bullets">
+          <li><i class="bi bi-check2"></i> Tax snapshot saved with every sale</li>
+          <li><i class="bi bi-check2"></i> GST, VAT and multi-tax support</li>
+          <li><i class="bi bi-check2"></i> Clear breakdown on receipt</li>
+        </ul>
+      </div>
+
+      <!-- 4. Customer Management -->
+      <div class="feature-box">
+        <div class="feature-icon" style="background:#f0fdf4;color:#16a34a;"><i class="fas fa-user-friends"></i></div>
+        <h3>4. Customer CRM &amp; Loyalty</h3>
+        <p>Search customers by phone, name, or barcode. Create new customer profiles on the fly, assign to sale before completion, or process fast guest checkout.</p>
+        <ul class="feature-bullets">
+          <li><i class="bi bi-check2"></i> View customer details &amp; credit balance</li>
+          <li><i class="bi bi-check2"></i> Customer-specific discount eligibility</li>
+          <li><i class="bi bi-check2"></i> Complete purchase history link</li>
+        </ul>
+      </div>
+
+      <!-- 5. Promotions & Discounts -->
+      <div class="feature-box">
+        <div class="feature-icon" style="background:#fdf2f8;color:#db2777;"><i class="fas fa-tags"></i></div>
+        <h3>5. Promotions &amp; Discounts</h3>
+        <p>View available promotional deals, verify promo code eligibility server-side, and apply automated percentage or fixed dollar discounts.</p>
+        <ul class="feature-bullets">
+          <li><i class="bi bi-check2"></i> Bill-level &amp; item-level promotions</li>
+          <li><i class="bi bi-check2"></i> Automatic savings display</li>
+          <li><i class="bi bi-check2"></i> Discount audit trail stored in ledger</li>
+        </ul>
+      </div>
+
+      <!-- 6. Hold & Resume Sales -->
+      <div class="feature-box">
+        <div class="feature-icon" style="background:#f1f5f9;color:#0f172a;"><i class="fas fa-pause-circle"></i></div>
+        <h3>6. Hold &amp; Resume Sales</h3>
+        <p>Customer forgot their wallet? Put the sale on hold with custom customer remarks, ring up the next customer in line, and resume anytime.</p>
+        <ul class="feature-bullets">
+          <li><i class="bi bi-check2"></i> Multi-cart parking repository</li>
+          <li><i class="bi bi-check2"></i> Visual active held sales counter</li>
+          <li><i class="bi bi-check2"></i> Seamless resume and bill completion</li>
+        </ul>
+      </div>
+
+      <!-- 7. Payment Management -->
+      <div class="feature-box">
+        <div class="feature-icon" style="background:#e0f2fe;color:#0284c7;"><i class="fas fa-credit-card"></i></div>
+        <h3>7. Multi-Tender Payments</h3>
+        <p>Accept Cash with quick tender buttons and automated change calculation. Native integration for Card, dynamic UPI QR code, and Pine Labs cloud terminals.</p>
+        <ul class="feature-bullets">
+          <li><i class="bi bi-check2"></i> Pine Labs payment terminal bridge</li>
+          <li><i class="bi bi-check2"></i> Insufficient payment alert validation</li>
+          <li><i class="bi bi-check2"></i> Stripe &amp; Card Reader integration</li>
+        </ul>
+      </div>
+
+      <!-- 8. Bill Completion -->
+      <div class="feature-box">
+        <div class="feature-icon" style="background:#fef2f2;color:#dc2626;"><i class="fas fa-file-invoice-dollar"></i></div>
+        <h3>8. Bill Completion &amp; Invoicing</h3>
+        <p>Atomic server-side validation. Recalculates prices, verifies stock availability, generates sequential invoice numbers (e.g. <code>POS-2026-XXXX</code>), and saves snapshot.</p>
+        <ul class="feature-bullets">
+          <li><i class="bi bi-check2"></i> Guaranteed price/tax snapshot</li>
+          <li><i class="bi bi-check2"></i> Atomic stock decrement</li>
+          <li><i class="bi bi-check2"></i> Instant receipt print trigger</li>
+        </ul>
+      </div>
+
+      <!-- 9. Sales History -->
+      <div class="feature-box">
+        <div class="feature-icon" style="background:#f3e8ff;color:#9333ea;"><i class="fas fa-history"></i></div>
+        <h3>9. Sales History &amp; Returns</h3>
+        <p>Comprehensive ledger of all completed sales. Search by transaction number, filter by date range or cashier, view receipt details, and reprint anytime.</p>
+        <ul class="feature-bullets">
+          <li><i class="bi bi-check2"></i> Filter by date, cashier, or tender</li>
+          <li><i class="bi bi-check2"></i> Product-level breakdown</li>
+          <li><i class="bi bi-check2"></i> Void / return transaction workflows</li>
+        </ul>
+      </div>
+
+      <!-- 10. Receipt Management -->
+      <div class="feature-box">
+        <div class="feature-icon" style="background:#ecfdf5;color:#059669;"><i class="fas fa-print"></i></div>
+        <h3>10. Receipt Management</h3>
+        <p>Dedicated ESC/POS formatting for 58mm mobile printers and 80mm commercial thermal counter printers with store header, tax summary, and auto-cut trigger.</p>
+        <ul class="feature-bullets">
+          <li><i class="bi bi-check2"></i> 58mm &amp; 80mm paper roll formats</li>
+          <li><i class="bi bi-check2"></i> USB, LAN &amp; Bluetooth printer drivers</li>
+          <li><i class="bi bi-check2"></i> Custom logo &amp; footer thank-you note</li>
+        </ul>
+      </div>
+
+      <!-- 11. Barcode Features -->
+      <div class="feature-box">
+        <div class="feature-icon" style="background:#fef3c7;color:#b45309;"><i class="fas fa-barcode"></i></div>
+        <h3>11. Barcode Scanning</h3>
+        <p>Global keystroke listener intercepts USB/HID laser scanner guns instantly without focusing on input fields. Plus mobile camera viewfinder with audio beep confirmation.</p>
+        <ul class="feature-bullets">
+          <li><i class="bi bi-check2"></i> Plug-and-play USB scanner capture</li>
+          <li><i class="bi bi-check2"></i> Tablet/phone camera barcode detector</li>
+          <li><i class="bi bi-check2"></i> Direct add-to-cart in milliseconds</li>
+        </ul>
+      </div>
+
+      <!-- 12. Inventory Integration -->
+      <div class="feature-box">
+        <div class="feature-icon" style="background:#eef2ff;color:#6366f1;"><i class="fas fa-boxes"></i></div>
+        <h3>12. Inventory Integration</h3>
+        <p>Live inventory synchronization. Checks available inventory on scan, blocks sale of out-of-stock items, and automatically updates quantities upon checkout.</p>
+        <ul class="feature-bullets">
+          <li><i class="bi bi-check2"></i> Automatic stock decrement</li>
+          <li><i class="bi bi-check2"></i> Low-stock threshold warnings</li>
+          <li><i class="bi bi-check2"></i> Stock movements &amp; quick adjust</li>
+        </ul>
+      </div>
+
+      <!-- 13. Offline POS Capability -->
+      <div class="feature-box">
+        <div class="feature-icon" style="background:#ecfeff;color:#0891b2;"><i class="fas fa-wifi-slash"></i></div>
+        <h3>13. 100% Offline POS Mode</h3>
+        <p>Keep ringing up sales even when the internet goes down. Uses IndexedDB local catalog caching and queues pending transactions, syncing automatically when back online.</p>
+        <ul class="feature-bullets">
+          <li><i class="bi bi-check2"></i> Zero downtime during internet outages</li>
+          <li><i class="bi bi-check2"></i> Automatic reconciliation queue</li>
+          <li><i class="bi bi-check2"></i> Duplicate transaction protection</li>
+        </ul>
+      </div>
+
+      <!-- 14. Staff & Security -->
+      <div class="feature-box">
+        <div class="feature-icon" style="background:#fef2f2;color:#b91c1c;"><i class="fas fa-shield-alt"></i></div>
+        <h3>14. Staff PIN Security</h3>
+        <p>4-digit cashier PIN login, instant register lock button, session timeout protection, and role-based access to settings and refund actions.</p>
+        <ul class="feature-bullets">
+          <li><i class="bi bi-check2"></i> Fast touchscreen PIN keypad</li>
+          <li><i class="bi bi-check2"></i> Lock register with 1 click</li>
+          <li><i class="bi bi-check2"></i> Audit logs for every cashier action</li>
+        </ul>
+      </div>
+
+      <!-- 15 & 16. Shifts & Cash Drawer -->
+      <div class="feature-box">
+        <div class="feature-icon" style="background:#f1f5f9;color:#334155;"><i class="fas fa-vault"></i></div>
+        <h3>15 &amp; 16. Shift &amp; Cash Drawer Z-Reports</h3>
+        <p>Declare opening cash floats before ringing sales. Track all cash in/out movements, and close shifts with physical denomination counting and printable Z-reports.</p>
+        <ul class="feature-bullets">
+          <li><i class="bi bi-check2"></i> Opening cash float verification</li>
+          <li><i class="bi bi-check2"></i> Expected cash vs counted discrepancy</li>
+          <li><i class="bi bi-check2"></i> Thermal Z-Report printout</li>
+        </ul>
+      </div>
+
+      <!-- 17 & 18. Dashboard & Responsive -->
+      <div class="feature-box">
+        <div class="feature-icon" style="background:#fdf4ff;color:#c026d3;"><i class="fas fa-chart-line"></i></div>
+        <h3>17 &amp; 18. Real-Time POS Dashboard</h3>
+        <p>Monitor today's total revenue, transaction counts, cash vs card vs UPI breakdowns, average ticket size, active shift drawer, and low-stock alerts.</p>
+        <ul class="feature-bullets">
+          <li><i class="bi bi-check2"></i> Live KPI statistics &amp; payment splits</li>
+          <li><i class="bi bi-check2"></i> Responsive on desktop, tablet, and phone</li>
+          <li><i class="bi bi-check2"></i> Recent sales stream</li>
+        </ul>
+      </div>
+
+      <!-- 19 & 20. Reports & Main Navigation -->
+      <div class="feature-box">
+        <div class="feature-icon" style="background:#f0fdf4;color:#15803d;"><i class="fas fa-file-alt"></i></div>
+        <h3>19 &amp; 20. Sales Reports &amp; Full Navigation</h3>
+        <p>Full suite of business reports: daily sales, date-range, by cashier, by category, and by payment method. Complete Section 20 navigation menu.</p>
+        <ul class="feature-bullets">
+          <li><i class="bi bi-check2"></i> Export reports for accounting</li>
+          <li><i class="bi bi-check2"></i> Tax &amp; shift reconciliation audits</li>
+          <li><i class="bi bi-check2"></i> Full 11-module POS system</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Key Selling Points Section -->
+  <section class="selling-points-section" id="selling-points">
+    <div class="section-head" style="margin-bottom:40px;">
+      <span class="pill-badge" style="background:rgba(56,189,248,0.15);color:#38bdf8;">KEY SELLING POINTS</span>
+      <h2 style="color:#ffffff;">Why Retailers Choose ThriveWoo POS</h2>
+    </div>
+
+    <div class="selling-grid">
+      <div class="selling-item">
+        <h4><i class="bi bi-lightning-fill"></i> Smart POS Billing</h4>
+        <p>Fast, simple, touch-optimized checkout designed for everyday retail rush hours.</p>
+      </div>
+      <div class="selling-item">
+        <h4><i class="bi bi-upc-scan"></i> Barcode Scanning</h4>
+        <p>Scan products instantly using handheld USB laser guns or mobile tablet cameras.</p>
+      </div>
+      <div class="selling-item">
+        <h4><i class="bi bi-arrow-repeat"></i> Inventory Integration</h4>
+        <p>Keep stock and completed sales synchronized across the entire business automatically.</p>
+      </div>
+      <div class="selling-item">
+        <h4><i class="bi bi-wallet2"></i> Multiple Payments</h4>
+        <p>Accept cash with change calculation, credit cards, UPI QR, and Pine Labs terminals.</p>
+      </div>
+      <div class="selling-item">
+        <h4><i class="bi bi-wifi-off"></i> Offline Ready</h4>
+        <p>Continue ringing up sales during network outages; automatically syncs when online.</p>
+      </div>
+      <div class="selling-item">
+        <h4><i class="bi bi-printer-fill"></i> Thermal Receipt Printing</h4>
+        <p>Print professional receipts in 58mm &amp; 80mm ESC/POS formats with store branding.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section class="pricing-sec" id="pricing">
+    <div class="section-head">
+      <span class="pill-badge"><i class="bi bi-tag-fill"></i> Simple Transparent Pricing</span>
+      <h2>Choose the Right Plan For Your Store</h2>
+      <p>All plans include a <strong>14-day free trial</strong> with full access to billing, barcode scanning, offline mode, and receipt printing.</p>
+    </div>
+
+    <div class="pricing-cards">
+      
+      <!-- Starter -->
+      <div class="pricing-card">
+        <h3 style="font-size:22px;font-weight:800;margin-bottom:6px;">Starter</h3>
+        <p style="font-size:14px;color:var(--slate);margin-bottom:20px;">Ideal for single-counter boutiques, kiosks, and pop-up shops.</p>
+        <div style="display:flex;align-items:baseline;gap:4px;margin-bottom:24px;">
+          <span style="font-size:24px;font-weight:700;">$</span>
+          <span style="font-size:48px;font-weight:900;">29</span>
+          <span style="color:var(--slate);">/ month</span>
+        </div>
+        <ul class="feature-bullets" style="margin-bottom:32px;flex-grow:1;">
+          <li><i class="bi bi-check-circle-fill text-success"></i> <strong>1 Active POS Register</strong></li>
+          <li><i class="bi bi-check-circle-fill text-success"></i> Unlimited Products &amp; Barcodes</li>
+          <li><i class="bi bi-check-circle-fill text-success"></i> USB &amp; Camera Barcode Scanning</li>
+          <li><i class="bi bi-check-circle-fill text-success"></i> 58mm &amp; 80mm Receipt Printing</li>
+          <li><i class="bi bi-check-circle-fill text-success"></i> Cash, Card &amp; UPI QR Payments</li>
+          <li><i class="bi bi-check-circle-fill text-success"></i> 100% Offline Vault Billing</li>
+        </ul>
+        <a href="/register?plan=starter" class="btn btn-secondary btn-lg" style="width:100%;font-weight:700;">
+          Start 14-Day Free Trial
+        </a>
+      </div>
+
+      <!-- Professional (Featured) -->
+      <div class="pricing-card featured">
+        <div class="popular-tag">MOST POPULAR</div>
+        <h3 style="font-size:22px;font-weight:800;margin-bottom:6px;">Professional</h3>
+        <p style="font-size:14px;color:var(--slate);margin-bottom:20px;">For busy retail stores requiring shift cash control and multi-tender.</p>
+        <div style="display:flex;align-items:baseline;gap:4px;margin-bottom:24px;">
+          <span style="font-size:24px;font-weight:700;color:var(--primary);">$</span>
+          <span style="font-size:48px;font-weight:900;color:var(--primary);">79</span>
+          <span style="color:var(--slate);">/ month</span>
+        </div>
+        <ul class="feature-bullets" style="margin-bottom:32px;flex-grow:1;">
+          <li><i class="bi bi-check-circle-fill text-success"></i> <strong>Up to 3 Active POS Registers</strong></li>
+          <li><i class="bi bi-check-circle-fill text-success"></i> <em>Everything in Starter, plus:</em></li>
+          <li><i class="bi bi-check-circle-fill text-success"></i> <strong>Pine Labs &amp; Stripe Terminal Sync</strong></li>
+          <li><i class="bi bi-check-circle-fill text-success"></i> <strong>Cash Drawer Z-Reports &amp; Shifts</strong></li>
+          <li><i class="bi bi-check-circle-fill text-success"></i> Park &amp; Resume Multi-Cart Sales</li>
+          <li><i class="bi bi-check-circle-fill text-success"></i> Customer Loyalty &amp; Promotions Engine</li>
+        </ul>
+        <a href="/register?plan=pro" class="btn btn-primary btn-lg" style="width:100%;font-weight:700;">
+          Start 14-Day Free Trial
+        </a>
+      </div>
+
+      <!-- Enterprise -->
+      <div class="pricing-card">
+        <h3 style="font-size:22px;font-weight:800;margin-bottom:6px;">Multi-Store Enterprise</h3>
+        <p style="font-size:14px;color:var(--slate);margin-bottom:20px;">For retail chains, supermarkets, and multi-location franchises.</p>
+        <div style="display:flex;align-items:baseline;gap:4px;margin-bottom:24px;">
+          <span style="font-size:24px;font-weight:700;">$</span>
+          <span style="font-size:48px;font-weight:900;">149</span>
+          <span style="color:var(--slate);">/ month</span>
+        </div>
+        <ul class="feature-bullets" style="margin-bottom:32px;flex-grow:1;">
+          <li><i class="bi bi-check-circle-fill text-success"></i> <strong>Up to 10 Active POS Registers</strong></li>
+          <li><i class="bi bi-check-circle-fill text-success"></i> <em>Everything in Professional, plus:</em></li>
+          <li><i class="bi bi-check-circle-fill text-success"></i> Multi-Location Inventory Sync</li>
+          <li><i class="bi bi-check-circle-fill text-success"></i> Custom ESC/POS Branding</li>
+          <li><i class="bi bi-check-circle-fill text-success"></i> Multi-Store Sales Consolidation</li>
+          <li><i class="bi bi-check-circle-fill text-success"></i> Role-Based Staff PIN Controls</li>
+        </ul>
+        <a href="/register?plan=enterprise" class="btn btn-dark btn-lg" style="width:100%;font-weight:700;">
+          Start 14-Day Free Trial
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer style="background:#0f172a;color:#94a3b8;padding:60px 0 30px 0;">
+    <div style="max-width:1240px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #1e293b;padding-bottom:30px;flex-wrap:wrap;gap:20px;">
+      <div style="display:flex;align-items:center;gap:12px;color:#ffffff;font-size:20px;font-weight:800;">
+        <div style="width:36px;height:36px;border-radius:10px;background:var(--primary);display:flex;align-items:center;justify-content:center;color:#fff;">
+          <i class="fas fa-cash-register"></i>
+        </div>
+        <span>ThriveWoo<strong>POS</strong></span>
+      </div>
+
+      <div style="display:flex;gap:24px;font-size:14px;">
+        <a href="#features" style="color:#94a3b8;">Features</a>
+        <a href="#selling-points" style="color:#94a3b8;">Selling Points</a>
+        <a href="#pricing" style="color:#94a3b8;">Pricing</a>
+        <a href="/login" style="color:#94a3b8;">Staff Login</a>
+        <a href="/register" style="color:#38bdf8;">Register &amp; Purchase</a>
+      </div>
+    </div>
+
+    <div style="max-width:1240px;margin:24px auto 0;padding:0 24px;text-align:center;font-size:13px;">
+      &copy; 2026 ThriveWoo POS. Complete retail feature reference for Buskit POS design and development.
+    </div>
+  </footer>
+
+</body>
+</html>

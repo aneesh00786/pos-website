@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="800px" height="800px" viewBox="0 0 800 800" version="1.1">
+<g id="surface1">
+<path style="fill:none;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke:rgb(0%,0%,0%);stroke-opacity:1;stroke-miterlimit:4;" d="M 12 6 L 40 6 C 43.31375 6 46 8.68625 46 12 L 46 40 C 46 43.31375 43.31375 46 40 46 L 12 46 C 8.68625 46 6 43.31375 6 40 L 6 12 C 6 8.68625 8.68625 6 12 6 Z M 12 6 " transform="matrix(12.5,0,0,12.5,0,0)"/>
+<path style="fill:none;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke:rgb(0%,0%,0%);stroke-opacity:1;stroke-miterlimit:4;" d="M 24 18 L 52 18 C 55.31375 18 58 20.68625 58 24 L 58 52 C 58 55.31375 55.31375 58 52 58 L 24 58 C 20.68625 58 18 55.31375 18 52 L 18 24 C 18 20.68625 20.68625 18 24 18 Z M 24 18 " transform="matrix(12.5,0,0,12.5,0,0)"/>
+<path style="fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(0%,0%,0%);stroke-opacity:1;stroke-miterlimit:4;" d="M 28 20 C 28 16.685938 25.314062 14 22 14 C 20.343125 14 18.843125 14.671875 17.756875 15.756875 L 11.756875 21.756875 C 9.414062 24.1 9.414062 27.9 11.756875 30.243125 C 14.1 32.585938 17.9 32.585938 20.243125 30.243125 L 23.243125 27.243125 " transform="matrix(12.5,0,0,12.5,125,75)"/>
+<path style="fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(0%,0%,0%);stroke-opacity:1;stroke-miterlimit:4;" d="M 22 14 C 25.314062 14 28 16.685938 28 20 C 28 21.656875 27.328125 23.156875 26.243125 24.243125 L 20.243125 30.243125 C 17.9 32.585938 14.1 32.585938 11.756875 30.243125 C 9.414062 27.9 9.414062 24.1 11.756875 21.756875 L 14.756875 18.756875 " transform="matrix(12.5,0,0,12.5,125,75)"/>
+<path style="fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(0%,0%,0%);stroke-opacity:1;stroke-miterlimit:4;" d="M 6 2 L 14 2 L 14 10 " transform="matrix(12.5,0,0,12.5,500,75)"/>
+<path style="fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(0%,0%,0%);stroke-opacity:1;stroke-miterlimit:4;" d="M 14 2 L 6 10 " transform="matrix(12.5,0,0,12.5,500,75)"/>
+</g>
+</svg>

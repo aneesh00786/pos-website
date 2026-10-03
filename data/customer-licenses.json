@@ -1,0 +1,63 @@
+{
+  "customer": {
+    "account_id": "ACC-78291",
+    "name": "Sarah Jenkins",
+    "company": "Harborview Market & Cafe",
+    "email": "sarah@harborview.com",
+    "phone": "+1 (555) 392-8172",
+    "plan": "Professional",
+    "status": "active",
+    "billing_cycle": "annual",
+    "renewal_date": "2027-04-15",
+    "registers_licensed": 3,
+    "registers_active": 2
+  },
+  "licenses": [
+    {
+      "key": "TWPOS-PRO-8921-X992-K714",
+      "assigned_to": "Counter Register #01 (Front)",
+      "created_at": "2026-04-15",
+      "device_type": "Windows 11 POS Terminal",
+      "last_sync": "Today, 10:45 AM",
+      "status": "active"
+    },
+    {
+      "key": "TWPOS-PRO-3810-M442-W892",
+      "assigned_to": "Drive-thru / Mobile Register #02",
+      "created_at": "2026-05-10",
+      "device_type": "Android POS Tablet",
+      "last_sync": "Yesterday, 07:12 PM",
+      "status": "active"
+    },
+    {
+      "key": "TWPOS-PRO-UNASSIGNED-AVAILABLE",
+      "assigned_to": "Unassigned Register Slot #03",
+      "created_at": "2026-04-15",
+      "device_type": "Available License Slot",
+      "last_sync": "Never",
+      "status": "available"
+    }
+  ],
+  "downloads": [
+    {
+      "platform": "Windows",
+      "name": "ThriveWoo POS Desktop v2.4.1 (64-bit)",
+      "file": "ThriveWoo-POS-Setup-v2.4.1.exe"
+    },
+    {
+      "platform": "macOS",
+      "name": "ThriveWoo POS Desktop v2.4.1 (Universal DMG)",
+      "file": "ThriveWoo-POS-v2.4.1.dmg"
+    },
+    {
+      "platform": "Android",
+      "name": "ThriveWoo POS Tablet APK v2.4.1",
+      "file": "thrivewoo-pos-v2.4.1.apk"
+    },
+    {
+      "platform": "Driver Pack",
+      "name": "ESC/POS Universal Thermal Drivers",
+      "file": "ESCPOS_Universal_Drivers.zip"
+    }
+  ]
+}

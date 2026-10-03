@@ -1,0 +1,43 @@
+[
+  {
+    "id": "USR-001",
+    "store_name": "Harborview Retail Store",
+    "email": "admin@thrivewoo.com",
+    "password": "password123",
+    "name": "Alex Morgan",
+    "pin": "1234",
+    "plan": "Professional",
+    "status": "active",
+    "created_at": "2026-09-28T15:35:01.283Z"
+  },
+  {
+    "id": "USR-01889",
+    "store_name": "Blue Wave Seafood Market",
+    "name": "Captain Liam",
+    "email": "liam@bluewave.com",
+    "password": "password123",
+    "phone": "+1 555-492-8812",
+    "country": "Australia",
+    "pin": "1234",
+    "plan": "Professional",
+    "billing_cycle": "annual",
+    "payment_method": "card",
+    "status": "active",
+    "created_at": "2026-09-28T15:35:01.889Z"
+  },
+  {
+    "id": "USR-01109",
+    "store_name": "sunEnery",
+    "name": "demo text",
+    "email": "rakesh5@jrboonsolutions.com",
+    "password": "Ego@9656",
+    "phone": "+619494984893",
+    "country": "Australia",
+    "pin": "1234",
+    "plan": "Professional",
+    "billing_cycle": "annual",
+    "payment_method": "card",
+    "status": "active",
+    "created_at": "2026-09-30T03:23:21.109Z"
+  }
+]

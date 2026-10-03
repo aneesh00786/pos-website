@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "code": "CUST-WALKIN",
+    "name": "Walk-in Customer / Guest",
+    "phone": "",
+    "email": "",
+    "points": 0,
+    "outstanding_balance": 0,
+    "credit_limit": 0
+  },
+  {
+    "id": 2,
+    "code": "CUST-001",
+    "name": "Emma Watson",
+    "phone": "0412345678",
+    "email": "emma.watson@gmail.com",
+    "points": 340,
+    "outstanding_balance": 0,
+    "credit_limit": 1000
+  },
+  {
+    "id": 3,
+    "code": "CUST-002",
+    "name": "David Beckham",
+    "phone": "0498765432",
+    "email": "david.b@retailhub.com",
+    "points": 120,
+    "outstanding_balance": 45.5,
+    "credit_limit": 500
+  },
+  {
+    "id": 4,
+    "code": "CUST-003",
+    "name": "Sophia Martinez",
+    "phone": "0422113344",
+    "email": "sophia.m@gmail.com",
+    "points": 85,
+    "outstanding_balance": 0,
+    "credit_limit": 250
+  }
+]

@@ -1,0 +1,119 @@
+[
+  {
+    "id": "hw-01",
+    "name": "ThrivePrint 80mm High-Speed Thermal Receipt Printer",
+    "category": "Printers",
+    "price": 149,
+    "compare_price": 189,
+    "badge": "Best Seller",
+    "image": "/img/hardware-printer-80.png",
+    "in_stock": true,
+    "rating": 4.9,
+    "reviews_count": 84,
+    "specs": [
+      "Auto-Cutter (1.5 Million cuts rated)",
+      "High speed 260mm/sec printing",
+      "Triple Interface: USB + Ethernet LAN + Bluetooth",
+      "ESC/POS Standard Command Support",
+      "RJ11 Cash Drawer Kickout Port (24V)"
+    ],
+    "description": "Commercial-grade 80mm thermal receipt printer engineered for fast checkout lanes. Plug-and-play with ThriveWoo POS web and desktop apps without driver installation."
+  },
+  {
+    "id": "hw-02",
+    "name": "ThrivePrint 58mm Mobile Pocket Thermal Printer",
+    "category": "Printers",
+    "price": 89,
+    "compare_price": 119,
+    "badge": "Portable",
+    "image": "/img/hardware-printer-58.png",
+    "in_stock": true,
+    "rating": 4.7,
+    "reviews_count": 42,
+    "specs": [
+      "Compact handheld footprint",
+      "Bluetooth 5.0 + USB-C connectivity",
+      "2000mAh rechargeable lithium battery (12h runtime)",
+      "58mm paper roll width",
+      "ESC/POS compatible"
+    ],
+    "description": "Ideal for pop-ups, food trucks, mobile counters, and tableside ordering. Pairs instantly with tablets, phones, and laptops."
+  },
+  {
+    "id": "hw-03",
+    "name": "ThriveScan Omni-Directional 1D/2D Desktop Barcode Scanner",
+    "category": "Scanners",
+    "price": 119,
+    "compare_price": 149,
+    "badge": "Hands-Free",
+    "image": "/img/hardware-scanner-omni.png",
+    "in_stock": true,
+    "rating": 4.8,
+    "reviews_count": 67,
+    "specs": [
+      "Rapid omni-directional scanning (no alignment needed)",
+      "Reads printed barcodes & phone screens (QR, UPC, EAN, Code128)",
+      "USB HID plug-and-play keyboard emulation",
+      "Adjustable scan head angle with LED confirmation"
+    ],
+    "description": "Hands-free countertop scanner designed for supermarket, grocery, and apparel speeds. Scans through worn, damaged, or phone-screen barcodes."
+  },
+  {
+    "id": "hw-04",
+    "name": "ThriveScan Wireless 2D Handheld Barcode Gun",
+    "category": "Scanners",
+    "price": 79,
+    "compare_price": 99,
+    "badge": "Wireless",
+    "image": "/img/hardware-scanner-gun.png",
+    "in_stock": true,
+    "rating": 4.8,
+    "reviews_count": 53,
+    "specs": [
+      "2.4GHz USB wireless dongle + Bluetooth",
+      "Up to 50m wireless transmission distance",
+      "Drop-tested from 1.5m to concrete",
+      "Storage mode holds 50,000 barcodes offline"
+    ],
+    "description": "Lightweight, rugged ergonomic handheld scanner with instant tactile and audio beep confirmation. Perfect for stocktaking and cash register checkout."
+  },
+  {
+    "id": "hw-05",
+    "name": "ThriveVault Heavy-Duty 5-Bill Cash Drawer",
+    "category": "Cash Drawers",
+    "price": 99,
+    "compare_price": 129,
+    "badge": "Secure Steel",
+    "image": "/img/hardware-drawer.png",
+    "in_stock": true,
+    "rating": 4.9,
+    "reviews_count": 91,
+    "specs": [
+      "Heavy gauge steel construction with roller bearing suspension",
+      "5 Adjustable Bill Slots with metal wire grippers + 8 Coin Cups",
+      "3-Position Key Lock (Manual Open, Electric Open, Locked)",
+      "RJ11 Printer kickout cable included"
+    ],
+    "description": "Reliable commercial cash drawer triggered automatically upon bill completion in ThriveWoo POS."
+  },
+  {
+    "id": "hw-06",
+    "name": "Complete All-In-One ThriveWoo Retail Hardware Bundle",
+    "category": "Bundles",
+    "price": 389,
+    "compare_price": 499,
+    "badge": "Save $110",
+    "image": "/img/hardware-bundle.png",
+    "in_stock": true,
+    "rating": 5,
+    "reviews_count": 128,
+    "specs": [
+      "1x 80mm High-Speed Thermal Receipt Printer",
+      "1x Omni-Directional Desktop 1D/2D Barcode Scanner",
+      "1x Heavy-Duty 5-Bill RJ11 Cash Drawer",
+      "1x Heavy Aluminum Tablet/iPad Swivel Counter Stand",
+      "5x Free 80mm BPA-Free Thermal Paper Rolls"
+    ],
+    "description": "Everything you need to turn any computer, laptop, or iPad into a powerhouse retail checkout station in 5 minutes."
+  }
+]

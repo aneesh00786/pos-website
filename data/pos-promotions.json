@@ -1,0 +1,32 @@
+[
+  {
+    "id": "PROMO-WELCOME10",
+    "name": "10% Welcome Discount",
+    "code": "WELCOME10",
+    "type": "percentage",
+    "value": 10,
+    "min_spend": 30,
+    "applicable_to": "all",
+    "is_active": true
+  },
+  {
+    "id": "PROMO-SAVE5",
+    "name": "$5 Off Orders Over $50",
+    "code": "SAVE5",
+    "type": "fixed",
+    "value": 5,
+    "min_spend": 50,
+    "applicable_to": "all",
+    "is_active": true
+  },
+  {
+    "id": "PROMO-BAKERY20",
+    "name": "20% Off Bakery Range",
+    "code": "BAKE20",
+    "type": "category_percentage",
+    "value": 20,
+    "category": "Bakery",
+    "min_spend": 15,
+    "is_active": true
+  }
+]
